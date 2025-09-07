@@ -4,7 +4,7 @@ let
 in
 {
   enabled = mkEnableOption "Scrobbler plugin";
-  scrobbleOtherMedia = mkOption {
+  scrobbleOtherMedia = mkEnableOption "" // {
     description = "Attempt to scrobble other video types (e.g. Podcasts, normal YouTube videos)";
     default = true;
   };
@@ -36,25 +36,30 @@ in
       apiRoot = mkOption {
         description = "Root of the Last.fm API";
         default = "http =//ws.audioscrobbler.com/2.0/";
+        type = types.str;
       };
       apiKey = mkOption {
         description = "Last.fm api key registered by @semvis123";
         default = "04d76faaac8726e60988e14c105d421a";
+        type = types.str;
       };
       secret = mkOption {
         description = "Last.fm api secret registered by @semvis123";
         default = "a5d2a36fdf64819290f6982481eaffa2";
+        type = types.str;
       };
     };
     listenbrainz = {
       enabled = mkEnableOption "ListenBrainz scrobbling";
       token = mkOption {
+        description = "ListenBrainz API key";
         default = null;
         type = types.nullOr types.str;
       };
       apiRoot = mkOption {
         description = "Root of the ListenBrainz API";
         default = "https =//api.listenbrainz.org/1/";
+        type = types.str;
       };
     };
   };
