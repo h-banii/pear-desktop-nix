@@ -14,6 +14,12 @@ in
     '';
     default = true;
   };
+  alternativeArtist = mkEnableOption "" // {
+    description = ''
+      Use alternative artist for scrobbling (e.g., DECO27 & (or) PinocchioP -> DECO27 / marasy -> まらしぃ)
+    '';
+    default = true;
+  };
   scrobblers = {
     lastfm = {
       enabled = mkEnableOption "Last.fm scrobbling";
