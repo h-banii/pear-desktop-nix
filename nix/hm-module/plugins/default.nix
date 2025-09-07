@@ -39,6 +39,7 @@ in
           ]
       ))
       {
+        audio-compressor.enabled = mkEnableOption "Audio Compressor plugin";
         album-actions.enabled = mkEnableOption "Album Actions plugin";
         amuse.enabled = mkEnableOption "Amuse plugin";
         blur-nav-bar.enabled = mkEnableOption "Blur Navigation Bar plugin";
