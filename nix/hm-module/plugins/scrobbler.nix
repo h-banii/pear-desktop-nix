@@ -9,7 +9,10 @@ in
     default = true;
   };
   alternativeTitles = mkEnableOption "" // {
-    description = "Whether to use alternative titles for scrobbling (Useful for non-roman song titles)";
+    description = ''
+      Use alternative titles for scrobbling (Useful for non-roman song titles, e.g. (Not) A Devil -> デビルじゃないもん)
+    '';
+    default = true;
   };
   scrobblers = {
     lastfm = {
