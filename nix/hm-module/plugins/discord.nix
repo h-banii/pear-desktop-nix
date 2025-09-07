@@ -1,6 +1,6 @@
 { lib }:
 let
-  inherit (lib) mkOption mkEnableOption;
+  inherit (lib) types mkOption mkEnableOption;
 in
 {
   enabled = mkEnableOption "Discord Rich Presence plugin";
@@ -27,5 +27,23 @@ in
   hideDurationLeft = mkOption {
     description = ''Hide the "duration left" in the rich presence'';
     default = false;
+  };
+  statusDisplayType = mkOption {
+    description = ''
+      Controls which field is displayed in the Discord status text
+
+      0: Name
+      1: State
+      2: Details
+
+      https://discord-api-types.dev/api/discord-api-types-v10/enum/StatusDisplayType
+    '';
+    default = 2;
+    example = 1;
+    type = types.enum [
+      0
+      1
+      2
+    ];
   };
 }
