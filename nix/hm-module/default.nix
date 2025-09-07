@@ -23,7 +23,7 @@ in
     url = mkOption { default = "https://music.youtube.com"; };
     version = mkOption {
       description = "Version used in migrations";
-      default = "3.10.0";
+      default = "3.11.0";
     };
     configFolderName = mkOption {
       description = "Name of the config folder";
