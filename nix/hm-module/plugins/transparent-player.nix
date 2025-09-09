@@ -1,0 +1,22 @@
+{ lib }:
+let
+  inherit (lib) mkEnableOption mkOption types;
+in
+{
+  enabled = mkEnableOption "Transparent player plugin";
+  opacity = mkOption {
+    type = types.number;
+    default = 0.5;
+    description = "Transparent player's opacity";
+  };
+  type = mkOption {
+    type = types.enum [
+      "mica"
+      "acrylic"
+      "tabbed"
+      "none"
+    ];
+    default = "acrylic";
+    description = "Transparent player's material type";
+  };
+}

@@ -35,6 +35,7 @@ in
             "skip-silences"
             "sponsorblock"
             "synced-lyrics"
+            "transparent-player"
             "video-toggle"
             "visualizer"
           ]
