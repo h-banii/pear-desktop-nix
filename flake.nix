@@ -1,9 +1,15 @@
 {
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+  inputs.home-manager = {
+    url = "github:nix-community/home-manager";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+
   outputs =
     {
       self,
+      home-manager,
       nixpkgs,
       systems,
       ...
@@ -18,6 +24,17 @@
     in
     {
       homeManagerModules.default = ./nix/hm-module;
+      homeManagerConfiguration.nobody = home-manager.lib.homeManagerConfiguration {
+        pkgs = pkgs;
+        modules = [
+          self.homeManagerModules.default
+          {
+            home.username = "nobody";
+            home.homeDirectory = "/home/nobody";
+            home.stateVersion = "25.05";
+          }
+        ];
+      };
 
       legacyPackages.${system} =
         let
@@ -43,7 +60,8 @@
 
       lib = {
         mkOptionsDoc = { module }: pkgs.callPackage ./nix/packages/options-doc.nix { inherit module; };
-      };
+      }
+      // nixpkgs.lib;
 
       formatter.${system} = pkgs.nixfmt-tree;
     };
