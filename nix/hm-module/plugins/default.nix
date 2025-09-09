@@ -20,6 +20,7 @@ in
             "auth-proxy-adapter"
             "captions-selector"
             "crossfade"
+            "custom-output-device"
             "disable-autoplay"
             "discord"
             "downloader"
