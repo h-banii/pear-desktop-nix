@@ -10,8 +10,8 @@ let
     mkOption
     mkEnableOption
     mkPackageOption
-    filterAttrs
     ;
+  inherit (lib.attrsets) filterAttrsRecursive;
   cfg = config.programs.youtube-music;
   readOnlyConfig = "${cfg.configFolderName}/${cfg.configFilePrefix}${cfg.configFileName}";
   writableConfig = "${cfg.configFolderName}/${cfg.configFileName}";
@@ -51,7 +51,7 @@ in
     home.packages = [ cfg.package ];
     xdg.configFile."${readOnlyConfig}".text =
       let
-        jsonOptions = builtins.toJSON (filterAttrs (n: v: v != null) cfg.options);
+        jsonOptions = builtins.toJSON (filterAttrsRecursive (n: v: v != null) cfg.options);
         jsonPlugins = builtins.toJSON cfg.plugins;
       in
       ''
