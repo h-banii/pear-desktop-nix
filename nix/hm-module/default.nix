@@ -108,7 +108,7 @@ in
         }
       '';
     home.activation.updateYouTubeMusicConfig = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
-      cp ${config.xdg.configHome}/{"${readOnlyConfig}","${writableConfig}"}
+      cp --update ${config.xdg.configHome}/{"${readOnlyConfig}","${writableConfig}"}
       chmod u+w "${config.xdg.configHome}/${writableConfig}"
     '';
   };
