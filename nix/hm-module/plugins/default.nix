@@ -53,21 +53,81 @@ let
     performance-improvement = "Performance Improvement plugin";
   };
 
+  pluginOptionPathBase = [
+    "programs"
+    "youtube-music"
+    "plugins"
+  ];
+
   renamedOptions = builtins.map (
     pluginName:
     let
-      pluginOptionPath = [
-        "programs"
-        "youtube-music"
-        "plugins"
-        pluginName
-      ];
+      pluginOptionPath = pluginOptionPathBase ++ [ pluginName ];
     in
     mkRenamedOptionModule (pluginOptionPath ++ [ "enabled" ]) (pluginOptionPath ++ [ "enable" ])
   ) ((builtins.attrNames simplePlugins) ++ complexPlugins);
 in
 {
-  imports = renamedOptions;
+  imports = renamedOptions ++ [
+    (mkRenamedOptionModule
+      (
+        pluginOptionPathBase
+        ++ [
+          "scrobbler"
+          "scrobblers"
+          "lastfm"
+          "enabled"
+        ]
+      )
+      (
+        pluginOptionPathBase
+        ++ [
+          "scrobbler"
+          "scrobblers"
+          "lastfm"
+          "enable"
+        ]
+      )
+    )
+    (mkRenamedOptionModule
+      (
+        pluginOptionPathBase
+        ++ [
+          "scrobbler"
+          "scrobblers"
+          "listenbrainz"
+          "enabled"
+        ]
+      )
+      (
+        pluginOptionPathBase
+        ++ [
+          "scrobbler"
+          "scrobblers"
+          "listenbrainz"
+          "enable"
+        ]
+      )
+    )
+    (mkRenamedOptionModule
+      (
+        pluginOptionPathBase
+        ++ [
+          "downloader"
+          "downloadOnFinish"
+          "enabled"
+        ]
+      )
+      (
+        pluginOptionPathBase
+        ++ [
+          "downloader"
+          "downloadOnFinish"
+          "enable"
+        ]
+      )
+    )
+  ];
 
   options.programs.youtube-music.plugins =
     mergeAttrs
