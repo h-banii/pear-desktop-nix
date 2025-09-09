@@ -1,4 +1,5 @@
 {
+  options,
   config,
   lib,
   pkgs,
@@ -11,7 +12,7 @@ let
     mkEnableOption
     mkPackageOption
     ;
-  inherit (lib.attrsets) mapAttrs' nameValuePair;
+  inherit (lib.attrsets) mapAttrs' mapAttrsRecursiveCond nameValuePair;
 
   mapAttrsRecursive' =
     f: set:
@@ -29,7 +30,16 @@ let
     recurse [ ] set;
 
   toYouTubeMusicJSON =
-    attrs:
+    opts: cfg:
+    let
+      # This is done to avoid "obsolete option" warnings:
+      # - first check if the option is defined
+      # - then we get the corresponding configuration value
+      definedOptions = filterAttrsRecursive (n: v: !lib.isOption v || v.isDefined or false) opts;
+      definedConfig = mapAttrsRecursiveCond (as: !(lib.isOption as)) (
+        path: value: lib.getAttrFromPath path cfg
+      ) definedOptions;
+    in
     builtins.toJSON (
       mapAttrsRecursive' (
         path: value:
@@ -40,7 +50,7 @@ let
           };
         in
         nameValuePair (renamedKeys.${name} or name) value
-      ) (filterAttrsRecursive (n: v: v != null) attrs)
+      ) (filterAttrsRecursive (n: v: v != null) definedConfig)
     );
 
   inherit (lib.attrsets) filterAttrsRecursive;
@@ -83,8 +93,9 @@ in
     home.packages = [ cfg.package ];
     xdg.configFile."${readOnlyConfig}".text =
       let
-        jsonOptions = toYouTubeMusicJSON cfg.options;
-        jsonPlugins = toYouTubeMusicJSON cfg.plugins;
+        opts = options.programs.youtube-music;
+        jsonOptions = toYouTubeMusicJSON opts.options cfg.options;
+        jsonPlugins = toYouTubeMusicJSON opts.plugins cfg.plugins;
       in
       ''
         {
