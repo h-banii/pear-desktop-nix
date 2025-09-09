@@ -11,6 +11,38 @@ let
     mkEnableOption
     mkPackageOption
     ;
+  inherit (lib.attrsets) mapAttrs' nameValuePair;
+
+  mapAttrsRecursive' =
+    f: set:
+    let
+      recurse =
+        path:
+        mapAttrs' (
+          name: value:
+          if builtins.isAttrs value then
+            nameValuePair name (recurse (path ++ [ name ]) value)
+          else
+            f (path ++ [ name ]) value
+        );
+    in
+    recurse [ ] set;
+
+  toYouTubeMusicJSON =
+    attrs:
+    builtins.toJSON (
+      mapAttrsRecursive' (
+        path: value:
+        let
+          name = lib.lists.last path;
+          renamedKeys = {
+            enable = "enabled";
+          };
+        in
+        nameValuePair (renamedKeys.${name} or name) value
+      ) (filterAttrsRecursive (n: v: v != null) attrs)
+    );
+
   inherit (lib.attrsets) filterAttrsRecursive;
   cfg = config.programs.youtube-music;
   readOnlyConfig = "${cfg.configFolderName}/${cfg.configFilePrefix}${cfg.configFileName}";
@@ -51,8 +83,8 @@ in
     home.packages = [ cfg.package ];
     xdg.configFile."${readOnlyConfig}".text =
       let
-        jsonOptions = builtins.toJSON (filterAttrsRecursive (n: v: v != null) cfg.options);
-        jsonPlugins = builtins.toJSON cfg.plugins;
+        jsonOptions = toYouTubeMusicJSON cfg.options;
+        jsonPlugins = toYouTubeMusicJSON cfg.plugins;
       in
       ''
         {
