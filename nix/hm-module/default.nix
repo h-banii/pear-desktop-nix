@@ -107,9 +107,15 @@ in
           }
         }
       '';
+
     home.activation.updateYouTubeMusicConfig = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
-      cp --update ${config.xdg.configHome}/{"${readOnlyConfig}","${writableConfig}"}
-      chmod u+w "${config.xdg.configHome}/${writableConfig}"
+      readOnlyConfigTimestamp="$(stat -c '%Y' "${config.xdg.configHome}/${readOnlyConfig}")"
+      writableConfigTimestamp="$(stat -c '%Y' "${config.xdg.configHome}/${writableConfig}")"
+
+      if [ "$readOnlyConfigTimestamp" -gt "$writableConfigTimestamp" ]; then
+        cp ${config.xdg.configHome}/{"${readOnlyConfig}","${writableConfig}"}
+        chmod u+w "${config.xdg.configHome}/${writableConfig}"
+      fi
     '';
   };
 }
