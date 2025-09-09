@@ -9,7 +9,7 @@ in
     type = types.nullOr types.str;
   };
   downloadOnFinish = {
-    enabled = mkOption { default = false; };
+    enable = mkOption { default = false; };
     seconds = mkOption { default = 20; };
     percent = mkOption { default = 10; };
     mode = mkOption {

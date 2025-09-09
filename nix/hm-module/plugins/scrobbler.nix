@@ -22,7 +22,7 @@ in
   };
   scrobblers = {
     lastfm = {
-      enabled = mkEnableOption "Last.fm scrobbling";
+      enable = mkEnableOption "Last.fm scrobbling";
       token = mkOption {
         description = "Token used for authentication";
         default = null;
@@ -50,7 +50,7 @@ in
       };
     };
     listenbrainz = {
-      enabled = mkEnableOption "ListenBrainz scrobbling";
+      enable = mkEnableOption "ListenBrainz scrobbling";
       token = mkOption {
         description = "ListenBrainz API key";
         default = null;
