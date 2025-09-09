@@ -3,7 +3,7 @@ let
   inherit (lib) mkOption types mkEnableOption;
 in
 {
-  enabled = mkEnableOption "AdBlocker plugin";
+  enable = mkEnableOption "AdBlocker plugin";
   cache = mkOption {
     description = "When enabled, the adblocker will cache the blocklists";
     default = true;

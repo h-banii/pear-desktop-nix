@@ -3,7 +3,7 @@ let
   inherit (lib) mkOption types mkEnableOption;
 in
 {
-  enabled = mkEnableOption "Ambient Mode plugin";
+  enable = mkEnableOption "Ambient Mode plugin";
   quality = mkOption {
     default = 50;
     type = types.enum [

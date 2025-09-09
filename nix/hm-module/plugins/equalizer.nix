@@ -3,7 +3,7 @@ let
   inherit (lib) mkOption mkEnableOption types;
 in
 {
-  enabled = mkEnableOption "Equalizer plugin";
+  enable = mkEnableOption "Equalizer plugin";
   filters = mkOption {
     default = [ ];
     type =

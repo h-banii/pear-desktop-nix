@@ -3,7 +3,7 @@ let
   inherit (lib) mkEnableOption mkOption types;
 in
 {
-  enabled = mkEnableOption "Custom output device plugin";
+  enable = mkEnableOption "Custom output device plugin";
   output = mkOption {
     type = types.str;
     default = "output";

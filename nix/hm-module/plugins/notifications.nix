@@ -3,7 +3,7 @@ let
   inherit (lib) mkEnableOption mkOption types;
 in
 {
-  enabled = mkEnableOption "Notifications plugin";
+  enable = mkEnableOption "Notifications plugin";
   unpauseNotification = mkOption {
     default = false;
   };

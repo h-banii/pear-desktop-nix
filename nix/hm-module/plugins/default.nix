@@ -1,6 +1,6 @@
 { lib, ... }:
 let
-  inherit (lib) mkEnableOption mergeAttrs;
+  inherit (lib) mkEnableOption mkRenamedOptionModule mergeAttrs;
   inherit (builtins) listToAttrs map;
 
   complexPlugins = [
@@ -52,8 +52,23 @@ let
     unobtrusive-player = "Unobtrusive Player plugin";
     performance-improvement = "Performance Improvement plugin";
   };
+
+  renamedOptions = builtins.map (
+    pluginName:
+    let
+      pluginOptionPath = [
+        "programs"
+        "youtube-music"
+        "plugins"
+        pluginName
+      ];
+    in
+    mkRenamedOptionModule (pluginOptionPath ++ [ "enabled" ]) (pluginOptionPath ++ [ "enable" ])
+  ) ((builtins.attrNames simplePlugins) ++ complexPlugins);
 in
 {
+  imports = renamedOptions;
+
   options.programs.youtube-music.plugins =
     mergeAttrs
       (listToAttrs (
@@ -64,7 +79,7 @@ in
       ))
       (
         lib.attrsets.mapAttrs (pluginName: pluginDescription: {
-          enabled = mkEnableOption pluginDescription;
+          enable = mkEnableOption pluginDescription;
         }) simplePlugins
       );
 }

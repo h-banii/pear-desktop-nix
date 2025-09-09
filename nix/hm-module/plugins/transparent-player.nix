@@ -3,7 +3,7 @@ let
   inherit (lib) mkEnableOption mkOption types;
 in
 {
-  enabled = mkEnableOption "Transparent player plugin";
+  enable = mkEnableOption "Transparent player plugin";
   opacity = mkOption {
     type = types.number;
     default = 0.5;

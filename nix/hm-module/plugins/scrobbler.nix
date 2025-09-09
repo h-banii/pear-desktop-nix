@@ -3,7 +3,7 @@ let
   inherit (lib) mkEnableOption mkOption types;
 in
 {
-  enabled = mkEnableOption "Scrobbler plugin";
+  enable = mkEnableOption "Scrobbler plugin";
   scrobbleOtherMedia = mkEnableOption "" // {
     description = "Attempt to scrobble other video types (e.g. Podcasts, normal YouTube videos)";
     default = true;

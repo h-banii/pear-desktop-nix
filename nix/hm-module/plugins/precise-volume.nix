@@ -3,7 +3,7 @@ let
   inherit (lib) mkEnableOption mkOption types;
 in
 {
-  enabled = mkEnableOption "Precise Volume plugin";
+  enable = mkEnableOption "Precise Volume plugin";
   steps = mkOption {
     default = 1;
     description = "Percentage of volume to change";

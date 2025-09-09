@@ -3,7 +3,7 @@ let
   inherit (lib) mkEnableOption mkOption types;
 in
 {
-  enabled = mkEnableOption "Picture-in-picture plugin";
+  enable = mkEnableOption "Picture-in-picture plugin";
   alwaysOnTop = mkOption {
     default = true;
   };
