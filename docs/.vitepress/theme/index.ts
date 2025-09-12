@@ -2,7 +2,7 @@
 import { h } from "vue";
 import type { Theme } from "vitepress";
 import DefaultTheme from "vitepress/theme";
-import OptionsDoc from "./components/OptionsDoc.vue";
+import { SearchOptions } from "vue-nix-manual/packages/vue-nix-manual";
 import "./style.css";
 
 export default {
@@ -13,7 +13,7 @@ export default {
     });
   },
   enhanceApp({ app }) {
-    app.component("OptionsDoc", OptionsDoc);
+    app.component("SearchOptions", SearchOptions);
     // ...
   },
 } satisfies Theme;

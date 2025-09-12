@@ -27,4 +27,11 @@ export default defineConfig({
     ],
   },
   srcDir: "src",
+  vite: {
+    build: {
+      rollupOptions: {
+        external: ["vue/server-renderer", "vue"],
+      },
+    },
+  },
 });
