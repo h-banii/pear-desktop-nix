@@ -19,8 +19,10 @@ buildNpmPackage {
 
   buildPhase = ''
     runHook preBuild
-    ls -la ./
-    npm run build >/dev/null 2>&1
+
+    # https://discourse.nixosstag.fcio.net/t/nix-build-of-vuepress-project-is-slow-or-hangs/56521/1
+    npm run build >$TEMP/npm-logs 2>&1
+
     runHook postBuild
   '';
 
