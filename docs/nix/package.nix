@@ -35,4 +35,7 @@ buildNpmPackage {
   };
 
   npmConfigHook = importNpmLock.npmConfigHook;
+
+  allowSubstitutes = false;
+  preferLocalBuild = true;
 }
