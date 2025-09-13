@@ -1,0 +1,836 @@
+{
+  "programs.youtube-music.enable": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "false"
+    },
+    "description": "Whether to enable YouTube Music.",
+    "example": {
+      "_type": "literalExpression",
+      "text": "true"
+    },
+    "loc": [
+      "programs",
+      "youtube-music",
+      "enable"
+    ],
+    "readOnly": false,
+    "type": "boolean"
+  },
+  "programs.youtube-music.options.alwaysOnTop": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/options.nix"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "false"
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "options",
+      "alwaysOnTop"
+    ],
+    "readOnly": false,
+    "type": "unspecified value"
+  },
+  "programs.youtube-music.options.appVisible": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/options.nix"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "true"
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "options",
+      "appVisible"
+    ],
+    "readOnly": false,
+    "type": "unspecified value"
+  },
+  "programs.youtube-music.options.autoResetAppCache": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/options.nix"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "false"
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "options",
+      "autoResetAppCache"
+    ],
+    "readOnly": false,
+    "type": "unspecified value"
+  },
+  "programs.youtube-music.options.autoUpdates": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/options.nix"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "true"
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "options",
+      "autoUpdates"
+    ],
+    "readOnly": false,
+    "type": "unspecified value"
+  },
+  "programs.youtube-music.options.customWindowTitle": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/options.nix"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "null"
+    },
+    "description": "Set window title to this value instead of dynamically changing it to\nthe current song's name.\n\nSee https://github.com/th-ch/youtube-music/pull/3656\n",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "options",
+      "customWindowTitle"
+    ],
+    "readOnly": false,
+    "type": "null or string"
+  },
+  "programs.youtube-music.options.disableHardwareAcceleration": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/options.nix"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "false"
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "options",
+      "disableHardwareAcceleration"
+    ],
+    "readOnly": false,
+    "type": "unspecified value"
+  },
+  "programs.youtube-music.options.hideMenu": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/options.nix"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "false"
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "options",
+      "hideMenu"
+    ],
+    "readOnly": false,
+    "type": "unspecified value"
+  },
+  "programs.youtube-music.options.hideMenuWarned": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/options.nix"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "false"
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "options",
+      "hideMenuWarned"
+    ],
+    "readOnly": false,
+    "type": "unspecified value"
+  },
+  "programs.youtube-music.options.language": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/options.nix"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "null"
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "options",
+      "language"
+    ],
+    "readOnly": false,
+    "type": "one of <null>, \"ar\", \"bg\", \"ca\", \"cs\", \"de\", \"el\", \"en\", \"es\", \"et\", \"fa\", \"fi\", \"fil\", \"fr\", \"he\", \"hi\", \"hr\", \"hu\", \"id\", \"is\", \"it\", \"ja\", \"ka\", \"ko\", \"lt\", \"ms\", \"nb\", \"ne\", \"nl\", \"pl\", \"pt-BR\", \"pt\", \"ro\", \"ru\", \"si\", \"sl\", \"sv\", \"th\", \"tr\", \"uk\", \"ur\", \"vi\", \"zh-CN\", \"zh-TW\""
+  },
+  "programs.youtube-music.options.likeButtons": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/options.nix"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "\"\""
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "options",
+      "likeButtons"
+    ],
+    "readOnly": false,
+    "type": "one of \"\", \"force\", \"hide\""
+  },
+  "programs.youtube-music.options.overrideUserAgent": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/options.nix"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "true"
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "options",
+      "overrideUserAgent"
+    ],
+    "readOnly": false,
+    "type": "unspecified value"
+  },
+  "programs.youtube-music.options.proxy": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/options.nix"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "\"\""
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "options",
+      "proxy"
+    ],
+    "readOnly": false,
+    "type": "unspecified value"
+  },
+  "programs.youtube-music.options.removeUpgradeButton": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/options.nix"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "false"
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "options",
+      "removeUpgradeButton"
+    ],
+    "readOnly": false,
+    "type": "unspecified value"
+  },
+  "programs.youtube-music.options.restartOnConfigChanges": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/options.nix"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "false"
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "options",
+      "restartOnConfigChanges"
+    ],
+    "readOnly": false,
+    "type": "unspecified value"
+  },
+  "programs.youtube-music.options.resumeOnStart": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/options.nix"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "true"
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "options",
+      "resumeOnStart"
+    ],
+    "readOnly": false,
+    "type": "unspecified value"
+  },
+  "programs.youtube-music.options.startAtLogin": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/options.nix"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "false"
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "options",
+      "startAtLogin"
+    ],
+    "readOnly": false,
+    "type": "unspecified value"
+  },
+  "programs.youtube-music.options.startingPage": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/options.nix"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "\"\""
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "options",
+      "startingPage"
+    ],
+    "readOnly": false,
+    "type": "one of \"\", \"Default\", \"Home\", \"Explore\", \"New Releases\", \"Charts\", \"Moods & Genres\", \"Library\", \"Playlists\", \"Songs\", \"Albums\", \"Artists\", \"Subscribed Artists\", \"Uploads\", \"Uploaded Playlists\", \"Uploaded Songs\", \"Uploaded Albums\", \"Uploaded Artists\""
+  },
+  "programs.youtube-music.options.themes": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/options.nix"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "[ ]"
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "options",
+      "themes"
+    ],
+    "readOnly": false,
+    "type": "list of absolute path"
+  },
+  "programs.youtube-music.options.tray": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/options.nix"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "false"
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "options",
+      "tray"
+    ],
+    "readOnly": false,
+    "type": "unspecified value"
+  },
+  "programs.youtube-music.options.trayClickPlayPause": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/options.nix"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "false"
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "options",
+      "trayClickPlayPause"
+    ],
+    "readOnly": false,
+    "type": "unspecified value"
+  },
+  "programs.youtube-music.options.usePodcastParticipantAsArtist": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/options.nix"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "true"
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "options",
+      "usePodcastParticipantAsArtist"
+    ],
+    "readOnly": false,
+    "type": "unspecified value"
+  },
+  "programs.youtube-music.package": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "pkgs.youtube-music"
+    },
+    "description": "The youtube-music package to use.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "package"
+    ],
+    "readOnly": false,
+    "type": "package"
+  },
+  "programs.youtube-music.plugins.adblocker.additionalBlockLists": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/plugins"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "[ ]"
+    },
+    "description": "Additional list of filters to use",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "plugins",
+      "adblocker",
+      "additionalBlockLists"
+    ],
+    "readOnly": false,
+    "type": "list of string"
+  },
+  "programs.youtube-music.plugins.adblocker.blocker": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/plugins"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "\"In player\""
+    },
+    "description": "Which adblocker to use",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "plugins",
+      "adblocker",
+      "blocker"
+    ],
+    "readOnly": false,
+    "type": "one of \"With blocklists\", \"In player\", \"Ad speedup\""
+  },
+  "programs.youtube-music.plugins.adblocker.cache": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/plugins"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "true"
+    },
+    "description": "When enabled, the adblocker will cache the blocklists",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "plugins",
+      "adblocker",
+      "cache"
+    ],
+    "readOnly": false,
+    "type": "unspecified value"
+  },
+  "programs.youtube-music.plugins.adblocker.disableDefaultLists": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/plugins"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "false"
+    },
+    "description": "Whether to disable the default blocklists",
+    "example": {
+      "_type": "literalExpression",
+      "text": "true"
+    },
+    "loc": [
+      "programs",
+      "youtube-music",
+      "plugins",
+      "adblocker",
+      "disableDefaultLists"
+    ],
+    "readOnly": false,
+    "type": "boolean"
+  },
+  "programs.youtube-music.plugins.adblocker.enable": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/plugins"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "false"
+    },
+    "description": "Whether to enable AdBlocker plugin.",
+    "example": {
+      "_type": "literalExpression",
+      "text": "true"
+    },
+    "loc": [
+      "programs",
+      "youtube-music",
+      "plugins",
+      "adblocker",
+      "enable"
+    ],
+    "readOnly": false,
+    "type": "boolean"
+  },
+  "programs.youtube-music.plugins.album-actions.enable": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/plugins"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "false"
+    },
+    "description": "Whether to enable Album Actions plugin.",
+    "example": {
+      "_type": "literalExpression",
+      "text": "true"
+    },
+    "loc": [
+      "programs",
+      "youtube-music",
+      "plugins",
+      "album-actions",
+      "enable"
+    ],
+    "readOnly": false,
+    "type": "boolean"
+  },
+  "programs.youtube-music.plugins.album-color-theme.enable": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/plugins"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "false"
+    },
+    "description": "Whether to enable Album Color Theme plugin.",
+    "example": {
+      "_type": "literalExpression",
+      "text": "true"
+    },
+    "loc": [
+      "programs",
+      "youtube-music",
+      "plugins",
+      "album-color-theme",
+      "enable"
+    ],
+    "readOnly": false,
+    "type": "boolean"
+  },
+  "programs.youtube-music.plugins.album-color-theme.ratio": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/plugins"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "0.5"
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "plugins",
+      "album-color-theme",
+      "ratio"
+    ],
+    "readOnly": false,
+    "type": "unspecified value"
+  },
+  "programs.youtube-music.plugins.ambient-mode.blur": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/plugins"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "100"
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "plugins",
+      "ambient-mode",
+      "blur"
+    ],
+    "readOnly": false,
+    "type": "one of 0, 5, 10, 25, 50, 100, 150, 200, 500"
+  },
+  "programs.youtube-music.plugins.ambient-mode.buffer": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/plugins"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "30"
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "plugins",
+      "ambient-mode",
+      "buffer"
+    ],
+    "readOnly": false,
+    "type": "one of 1, 5, 10, 20, 30"
+  },
+  "programs.youtube-music.plugins.ambient-mode.enable": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/plugins"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "false"
+    },
+    "description": "Whether to enable Ambient Mode plugin.",
+    "example": {
+      "_type": "literalExpression",
+      "text": "true"
+    },
+    "loc": [
+      "programs",
+      "youtube-music",
+      "plugins",
+      "ambient-mode",
+      "enable"
+    ],
+    "readOnly": false,
+    "type": "boolean"
+  },
+  "programs.youtube-music.plugins.ambient-mode.fullscreen": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/plugins"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "false"
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "plugins",
+      "ambient-mode",
+      "fullscreen"
+    ],
+    "readOnly": false,
+    "type": "unspecified value"
+  },
+  "programs.youtube-music.plugins.ambient-mode.interpolationTime": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/plugins"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "1500"
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "plugins",
+      "ambient-mode",
+      "interpolationTime"
+    ],
+    "readOnly": false,
+    "type": "one of 0, 500, 1000, 1500, 2000, 3000, 4000, 5000"
+  },
+  "programs.youtube-music.plugins.ambient-mode.opacity": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/plugins"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "1.0"
+    },
+    "description": "Value between 0.0 and 1.0",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "plugins",
+      "ambient-mode",
+      "opacity"
+    ],
+    "readOnly": false,
+    "type": "integer or floating point number between 0 and 1 (both inclusive)"
+  },
+  "programs.youtube-music.plugins.ambient-mode.quality": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/plugins"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "50"
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "plugins",
+      "ambient-mode",
+      "quality"
+    ],
+    "readOnly": false,
+    "type": "one of 10, 25, 50, 100, 200, 500, 1000"
+  },
+  "programs.youtube-music.plugins.ambient-mode.size": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/plugins"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "100"
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "plugins",
+      "ambient-mode",
+      "size"
+    ],
+    "readOnly": false,
+    "type": "one of 100, 110, 125, 150, 175, 200, 300"
+  },
+  "programs.youtube-music.plugins.amuse.enable": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/plugins"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "false"
+    },
+    "description": "Whether to enable Amuse plugin.",
+    "example": {
+      "_type": "literalExpression",
+      "text": "true"
+    },
+    "loc": [
+      "programs",
+      "youtube-music",
+      "plugins",
+      "amuse",
+      "enable"
+    ],
+    "readOnly": false,
+    "type": "boolean"
+  },
+  "programs.youtube-music.plugins.api-server.authStrategy": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/plugins"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "\"AUTH_AT_FIRST\""
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "plugins",
+      "api-server",
+      "authStrategy"
+    ],
+    "readOnly": false,
+    "type": "one of \"AUTH_AT_FIRST\", \"NONE\""
+  },
+  "programs.youtube-music.plugins.visualizer.wave.animations.*.type": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module/plugins"
+    ],
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "plugins",
+      "visualizer",
+      "wave",
+      "animations",
+      "*",
+      "type"
+    ],
+    "readOnly": false,
+    "type": "string"
+  },
+  "programs.youtube-music.url": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "\"https://music.youtube.com\""
+    },
+    "description": "This option has no description.",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "url"
+    ],
+    "readOnly": false,
+    "type": "unspecified value"
+  },
+  "programs.youtube-music.version": {
+    "declarations": [
+      "/nix/store/r5cqvarv2zngbkpw03jh7c0cvdgrdi2z-source/nix/hm-module"
+    ],
+    "default": {
+      "_type": "literalExpression",
+      "text": "\"3.11.0\""
+    },
+    "description": "Version used in migrations",
+    "loc": [
+      "programs",
+      "youtube-music",
+      "version"
+    ],
+    "readOnly": false,
+    "type": "unspecified value"
+  }
+}

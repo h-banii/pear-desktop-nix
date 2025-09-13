@@ -1,5 +1,6 @@
 <script setup>
-import { withBase } from 'vitepress'
+import options from "./options.json";
+import { createFilters } from 'vue-nix-manual';
 
 const filters = [
   {
@@ -13,8 +14,10 @@ const filters = [
     checked: false,
   }
 ];
+
+const pluginOptions = Object.fromEntries(Object.entries(options).filter(([key, _]) => key.includes("plugins")));
 </script>
 
 # Home Manager Module
 
-<SearchOptions :file='withBase("options.json")' :filters='filters' />
+<SearchOptions :options='options' :filters='filters.concat(createFilters(pluginOptions, 3, 2))' />
