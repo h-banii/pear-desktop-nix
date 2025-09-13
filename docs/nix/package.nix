@@ -3,6 +3,7 @@
   buildNpmPackage,
   nix-gitignore,
   importNpmLock,
+  vue-nix-manual,
   ...
 }:
 buildNpmPackage {
@@ -34,6 +35,9 @@ buildNpmPackage {
 
   npmDeps = importNpmLock {
     npmRoot = ../.;
+    packageSourceOverrides = {
+      "node_modules/vue-nix-manual" = "${vue-nix-manual}/lib/node_modules/vue-nix-manual";
+    };
   };
 
   npmConfigHook = importNpmLock.npmConfigHook;
