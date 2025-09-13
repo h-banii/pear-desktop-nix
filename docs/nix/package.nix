@@ -10,6 +10,12 @@ buildNpmPackage {
   pname = "youtube-music-nix-docs";
   version = "1.0.0";
 
+  # TODO: Figure out a better fix
+  preBuild = ''
+    rm ./node_modules/vue-nix-manual
+    cp -r "${vue-nix-manual}/lib/node_modules/vue-nix-manual" ./node_modules/vue-nix-manual
+  '';
+
   src = nix-gitignore.gitignoreSourcePure [
     ../.gitignore
     "result\n"

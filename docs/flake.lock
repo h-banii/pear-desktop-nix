@@ -73,11 +73,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1757743105,
-        "narHash": "sha256-1ForuIlLtF3Rs0x1eYFhlKVKLUhelhSJnMlA5YLt+cA=",
+        "lastModified": 1757748002,
+        "narHash": "sha256-s3VcVI/vH4IGO7T+vmf3YAEdzWbwl9bOTULh2/VATQM=",
         "owner": "h-banii",
         "repo": "vue-nix-manual",
-        "rev": "3650a980a058f5d96f775f8abe4dd444a075ec9d",
+        "rev": "d59710a772e4d82dca50c3b56c47ea8652c71e98",
         "type": "github"
       },
       "original": {
