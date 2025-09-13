@@ -4,4 +4,4 @@ import { withBase } from 'vitepress'
 
 # Home Manager Module
 
-<SearchOptions :file='withBase("home-manager-options.json")' />
+<SearchOptions :file='withBase("options.json")' />
