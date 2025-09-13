@@ -4,11 +4,16 @@
   nix-gitignore,
   importNpmLock,
   vue-nix-manual,
+  home-manager-options,
   ...
 }:
 buildNpmPackage {
   pname = "youtube-music-nix-docs";
   version = "1.0.0";
+
+  patchPhase = ''
+    ln -sf "${home-manager-options}/share/doc/nixos/options.json" ./src/pages/home-manager/options.json
+  '';
 
   # TODO: Figure out a better fix
   preBuild = ''

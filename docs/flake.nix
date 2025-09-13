@@ -23,36 +23,15 @@
       packages = forAllSystems (system: {
         default = pkgsFor.${system}.callPackage ./nix/package.nix {
           vue-nix-manual = vue-nix-manual.packages.${system}.default;
+          home-manager-options = self.legacyPackages.${system}.home-manager-options.optionsJSON;
         };
       });
 
-      legacyPackages = forAllSystems (
-        system:
-        let
-          pkgs = pkgsFor.${system};
-        in
-        {
-          homeManagerOptionsDoc = hm-module.lib.mkOptionsDoc {
-            module = hm-module.homeManagerModules.default;
-          };
-          docs =
-            let
-              homeManagerOptionsJSON = self.legacyPackages.${system}.homeManagerOptionsDoc.optionsJSON;
-            in
-            pkgs.symlinkJoin {
-              name = "youtube-music-nix-docs";
-              paths = [
-                self.packages.${system}.default
-                (pkgs.linkFarm "youtube-music-nix-hm-options" [
-                  {
-                    name = "pages/home-manager/options.json";
-                    path = "${homeManagerOptionsJSON}/share/doc/nixos/options.json";
-                  }
-                ])
-              ];
-            };
-        }
-      );
+      legacyPackages = forAllSystems (system: {
+        home-manager-options = hm-module.lib.mkOptionsDoc {
+          module = hm-module.homeManagerModules.default;
+        };
+      });
 
       devShells = forAllSystems (system: {
         default = pkgsFor.${system}.callPackage ./nix/shell.nix { };

@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v4.2.2
       - name: Nix build
         working-directory: ./docs
-        run: nix build .#docs
+        run: nix build
       - uses: actions/upload-pages-artifact@v3.0.1
         with:
           path: ./docs/result
