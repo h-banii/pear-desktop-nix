@@ -26,10 +26,11 @@ jobs:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@v4.2.2
       - name: Nix build
+        working-directory: ./docs
         run: nix build .#docs
       - uses: actions/upload-pages-artifact@v3.0.1
         with:
-          path: ./result
+          path: ./docs/result
 
   deploy:
     environment:
