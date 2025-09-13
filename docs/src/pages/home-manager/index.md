@@ -1,3 +1,7 @@
+<script setup>
+import { withBase } from 'vitepress'
+</script>
+
 # Home Manager Module
 
-<SearchOptions file='home-manager-options.json' />
+<SearchOptions :file='withBase("home-manager-options.json")' />
