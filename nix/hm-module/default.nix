@@ -92,6 +92,7 @@ in
     version = mkOption {
       description = "Version used in migrations";
       default = "3.11.0";
+      internal = true;
     };
     configFolderName = mkOption {
       description = "Name of the config folder";
