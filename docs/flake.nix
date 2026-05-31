@@ -1,8 +1,14 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    vue-nix-manual.url = "github:h-banii/vue-nix-manual";
-    hm-module.url = "path:../.";
+    vue-nix-manual = {
+      url = "github:h-banii/vue-nix-manual";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hm-module = {
+      url = "path:../.";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -28,7 +34,7 @@
       });
 
       legacyPackages = forAllSystems (system: {
-        home-manager-options = hm-module.lib.mkOptionsDoc {
+        home-manager-options = vue-nix-manual.lib.${system}.mkOptionsDoc {
           module = hm-module.homeManagerModules.default;
         };
       });

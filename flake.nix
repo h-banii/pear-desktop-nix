@@ -19,12 +19,6 @@
     {
       homeManagerModules.default = ./nix/hm-module;
 
-      # TODO: Move this to vue-nix-manual
-      lib = {
-        mkOptionsDoc =
-          { module }: pkgsFor.x86_64-linux.callPackage ./nix/packages/options-doc.nix { inherit module; };
-      };
-
       formatter = forAllSystems (system: pkgsFor.${system}.nixfmt-tree);
     };
 }
