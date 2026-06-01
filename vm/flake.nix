@@ -21,22 +21,22 @@
     {
       legacyPackages.${system} =
         let
-          default-system = self.lib.mkYtmSystem {
-            youtube-music = nixpkgs.legacyPackages.${system}.youtube-music;
+          default-system = self.lib.mkSystem {
+            inherit (nixpkgs.legacyPackages.${system}) pear-desktop;
           };
         in
         default-system.config.system.build;
 
       lib = {
-        mkYtmSystem =
+        mkSystem =
           {
-            youtube-music,
+            pear-desktop,
             extraModules ? [ ],
           }:
           nixpkgs.lib.nixosSystem {
             inherit system;
             specialArgs = {
-              inherit youtube-music;
+              inherit pear-desktop;
               inherit home-manager;
             };
             modules = [ ./configuration ] ++ extraModules;

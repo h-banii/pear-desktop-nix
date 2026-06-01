@@ -17,7 +17,7 @@
         ];
         bind = [
           "$mod, T, exec, kitty"
-          "$mod, M, exec, youtube-music"
+          "$mod, M, exec, pear-desktop"
           "$mod, C, killactive"
         ];
         bindm = [

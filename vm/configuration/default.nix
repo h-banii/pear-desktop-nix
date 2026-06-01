@@ -1,6 +1,6 @@
 {
   pkgs,
-  youtube-music,
+  pear-desktop,
   modulesPath,
   lib,
   ...
@@ -11,7 +11,7 @@
     "flakes"
   ];
 
-  networking.hostName = "youtube-music";
+  networking.hostName = "pear-desktop";
 
   imports = [
     (modulesPath + "/profiles/minimal.nix")
@@ -39,7 +39,7 @@
   programs.hyprland.enable = true;
 
   environment.systemPackages = [
-    youtube-music
+    pear-desktop
   ];
 
   system.stateVersion = "24.05";

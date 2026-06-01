@@ -3,8 +3,8 @@
 layout: home
 
 hero:
-  name: "YouTube Music"
-  text: "th-ch/youtube-music"
+  name: "Pear Desktop"
+  text: "pear-devs/pear-desktop"
   tagline: "Home Manager Module Documentation"
   actions:
     - theme: brand
@@ -16,7 +16,7 @@ features:
     details: "Options documentation"
     link: /pages/home-manager/
   - title: Virtual Machine
-    details: "Run youtube-music in a Virtual Machine"
+    details: "Run pear-desktop in a Virtual Machine"
     link: /pages/virtual-machine
 ---
 

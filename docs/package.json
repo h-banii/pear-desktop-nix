@@ -1,7 +1,7 @@
 {
-  "name": "youtube-music-nix-docs",
+  "name": "pear-desktop-nix-docs",
   "version": "1.0.0",
-  "description": "Documentation for the youtube-music Home Manager module",
+  "description": "Documentation for the pear-desktop Home Manager module",
   "main": " ",
   "scripts": {
     "dev": "vitepress dev",

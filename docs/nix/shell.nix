@@ -4,7 +4,7 @@
   ...
 }:
 mkShell {
-  name = "youtube-music-nix-docs-dev";
+  name = "pear-desktop-nix-docs-dev";
   packages = [
     nodejs
   ];

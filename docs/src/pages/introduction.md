@@ -1,8 +1,8 @@
 # Introduction
 
 ```nix
-inputs.youtube-music = {
-    url = "github:h-banii/youtube-music-nix";
+inputs.pear-desktop = {
+    url = "github:h-banii/pear-desktop-nix";
     inputs.nixpkgs.follows = "nixpkgs";
 };
 ```
@@ -11,9 +11,9 @@ inputs.youtube-music = {
 {
     ...
     imports = [
-        inputs.youtube-music.homeManagerModules.default
+        inputs.pear-desktop.homeManagerModules.default
     ];
-    programs.youtube-music = {
+    programs.pear-desktop = {
         enable = true;
         options = {
             tray = true;

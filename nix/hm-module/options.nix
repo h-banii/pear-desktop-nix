@@ -3,7 +3,7 @@ let
   inherit (lib) mkOption types;
 in
 {
-  options.programs.youtube-music.options = {
+  options.programs.pear-desktop.options = {
     language = mkOption {
       default = null;
       type = types.enum [
@@ -141,7 +141,7 @@ in
         Set window title to this value instead of dynamically changing it to
         the current song's name.
 
-        See https://github.com/th-ch/youtube-music/pull/3656
+        See https://github.com/th-ch/pear-desktop/pull/3656
       '';
       default = null;
       type = types.nullOr types.str;

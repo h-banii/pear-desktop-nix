@@ -2,9 +2,9 @@ import { defineConfig } from "vitepress";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "youtube-music-nix",
+  title: "pear-desktop-nix",
   description: "Documentation",
-  base: "/youtube-music-nix/",
+  base: "/pear-desktop-nix/",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [{ text: "Home", link: "/" }],
@@ -22,7 +22,7 @@ export default defineConfig({
     socialLinks: [
       {
         icon: "github",
-        link: "https://github.com/h-banii/youtube-music-nix",
+        link: "https://github.com/h-banii/pear-desktop-nix",
       },
     ],
   },

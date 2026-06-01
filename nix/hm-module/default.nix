@@ -11,6 +11,7 @@ let
     mkOption
     mkEnableOption
     mkPackageOption
+    mkRenamedOptionModule
     ;
   inherit (lib.attrsets) mapAttrs' mapAttrsRecursiveCond nameValuePair;
 
@@ -29,7 +30,7 @@ let
     in
     recurse [ ] set;
 
-  toYouTubeMusicJSON =
+  toPearDesktopJSON =
     opts: cfg:
     let
       # This is done to avoid "obsolete option" warnings:
@@ -54,13 +55,13 @@ let
     );
 
   inherit (lib.attrsets) filterAttrsRecursive;
-  cfg = config.programs.youtube-music;
+  cfg = config.programs.pear-desktop;
 
   generatedConfig =
     let
-      opts = options.programs.youtube-music;
-      jsonOptions = toYouTubeMusicJSON opts.options cfg.options;
-      jsonPlugins = toYouTubeMusicJSON opts.plugins cfg.plugins;
+      opts = options.programs.pear-desktop;
+      jsonOptions = toPearDesktopJSON opts.options cfg.options;
+      jsonPlugins = toPearDesktopJSON opts.plugins cfg.plugins;
       configText = ''
         "url": "${cfg.url}",
         "options": ${jsonOptions},
@@ -73,7 +74,7 @@ let
       '';
     in
     rec {
-      package = pkgs.writeText "youtube-music-config.json" ''
+      package = pkgs.writeText "pear-desktop-config.json" ''
         {
           ${configText},
           "__nix__": {
@@ -85,20 +86,28 @@ let
     };
 in
 {
-  options.programs.youtube-music = {
-    enable = mkEnableOption "YouTube Music";
-    package = mkPackageOption pkgs "youtube-music" { };
+  options.programs.pear-desktop = {
+    enable = mkEnableOption "Pear Desktop";
+
+    package = mkPackageOption pkgs "pear-desktop" { };
+
     url = mkOption { default = "https://music.youtube.com"; };
+
     version = mkOption {
       description = "Version used in migrations";
       default = "3.11.0";
       internal = true;
     };
+
+    # TODO: Check for changes on this option on the next release
+    #
+    # this is the `productName` in `package.json` (probably)
     configFolderName = mkOption {
       description = "Name of the config folder";
       default = "YouTube Music";
       internal = true;
     };
+
     configFileName = mkOption {
       description = "Name of the config file";
       default = "config.json";
@@ -109,12 +118,22 @@ in
   imports = [
     ./options.nix
     ./plugins
+    (mkRenamedOptionModule
+      [
+        "programs"
+        "youtube-music"
+      ]
+      [
+        "programs"
+        "pear-desktop"
+      ]
+    )
   ];
 
   config = mkIf cfg.enable {
     home.packages = [ cfg.package ];
 
-    home.activation.updateYouTubeMusicConfig =
+    home.activation.updatePearDesktopConfig =
       let
         jq = lib.getExe pkgs.jq;
       in

@@ -5,7 +5,7 @@ in
 {
   enable = mkEnableOption "Scrobbler plugin";
   scrobbleOtherMedia = mkEnableOption "" // {
-    description = "Attempt to scrobble other video types (e.g. Podcasts, normal YouTube videos)";
+    description = "Attempt to scrobble other video types (e.g. Podcasts, normal videos)";
     default = true;
   };
   alternativeTitles = mkEnableOption "" // {

@@ -55,7 +55,7 @@ let
 
   pluginOptionPathBase = [
     "programs"
-    "youtube-music"
+    "pear-desktop"
     "plugins"
   ];
 
@@ -129,7 +129,7 @@ in
     )
   ];
 
-  options.programs.youtube-music.plugins =
+  options.programs.pear-desktop.plugins =
     mergeAttrs
       (listToAttrs (
         map (plugin: {

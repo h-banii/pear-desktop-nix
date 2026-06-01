@@ -8,7 +8,7 @@
   ...
 }:
 buildNpmPackage {
-  pname = "youtube-music-nix-docs";
+  pname = "pear-desktop-nix-docs";
   version = "1.0.0";
 
   patchPhase = ''
