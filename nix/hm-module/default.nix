@@ -91,7 +91,17 @@ in
 
     package = mkPackageOption pkgs "pear-desktop" { };
 
-    url = mkOption { default = "https://music.youtube.com"; };
+    url = mkOption {
+      default = "https://music.youtube.com";
+      description = ''
+        Starting page url.
+
+        This is only used if `options.resumeOnStart` is enabled.
+
+        This is set internally by the application.
+      '';
+      internal = true;
+    };
 
     version = mkOption {
       description = "Version used in migrations";
