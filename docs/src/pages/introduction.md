@@ -17,6 +17,9 @@ inputs.pear-desktop = {
         enable = true;
         options = {
             tray = true;
+            themes = [
+              ./style.css
+            ];
             ...
         };
         plugins = {
