@@ -1,11 +1,13 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 let
-  inherit (lib) mkOption types;
+  inherit (pkgs.stdenv.hostPlatform) isDarwin;
+  inherit (lib) mkOption mkEnableOption types;
 in
 {
   options.programs.pear-desktop.options = {
     language = mkOption {
       default = null;
+      description = "Language used by the application";
       type = types.enum [
         null
         "ar"
@@ -53,47 +55,55 @@ in
         "zh-TW"
       ];
     };
-    tray = mkOption {
-      default = false;
-    };
-    appVisible = mkOption {
+    tray = mkEnableOption "tray support";
+    appVisible = mkEnableOption "" // {
       default = true;
+      description = "";
     };
-    autoUpdates = mkOption {
-      default = true;
+    autoUpdates = mkEnableOption "auto updates" // {
+      description = "This is not used on nix, set `programs.pear-desktop.package` instead";
+      internal = true;
     };
-    alwaysOnTop = mkOption {
-      default = false;
-    };
-    hideMenu = mkOption {
-      default = false;
+    alwaysOnTop = mkEnableOption "always on top";
+    hideMenu = mkEnableOption "" // {
+      description = "Whether to hide the menu on Windows/Linux (use Alt to toggle it)";
+      internal = isDarwin;
     };
     hideMenuWarned = mkOption {
-      default = false;
+      description = "Used internally to determine if hide menu warning should be displayed";
+      default = true;
+      internal = true;
     };
     startAtLogin = mkOption {
+      description = ''
+        Whether to start the app at login on Windows/Mac
+
+        https://www.electronjs.org/docs/api/app#appsetloginitemsettingssettings-macos-windows
+      '';
+      internal = !isDarwin;
       default = false;
     };
-    disableHardwareAcceleration = mkOption {
-      default = false;
+    disableHardwareAcceleration = mkEnableOption "" // {
+      description = "Whether to disable hardware acceleration";
     };
-    removeUpgradeButton = mkOption {
-      default = false;
+    removeUpgradeButton = mkEnableOption "" // {
+      description = "Whether to remove the upgrade button";
     };
-    restartOnConfigChanges = mkOption {
-      default = false;
+    restartOnConfigChanges = mkEnableOption "" // {
+      description = "Whether to restart on config changes";
     };
-    trayClickPlayPause = mkOption {
-      default = false;
+    trayClickPlayPause = mkEnableOption "" // {
+      description = "Whether to play/pause when clicking the tray icon";
     };
-    autoResetAppCache = mkOption {
-      default = false;
+    autoResetAppCache = mkEnableOption "" // {
+      description = "Whether to reset the cache when the app starts";
     };
-    resumeOnStart = mkOption {
-      default = true;
+    resumeOnStart = mkEnableOption "" // {
+      description = "Whether to resume the last song when the app starts";
+      defaul = true;
     };
     likeButtons = mkOption {
-      default = "";
+      default = "Whether to show or hide the like buttons";
       type = types.enum [
         ""
         "force"
@@ -102,6 +112,9 @@ in
     };
     proxy = mkOption {
       default = "";
+      description = "Proxy uri";
+      example = "SOCKS5://127.0.0.1:9999";
+      type = types.str;
     };
     startingPage = mkOption {
       default = "";
@@ -126,14 +139,21 @@ in
         "Uploaded Artists"
       ];
     };
-    overrideUserAgent = mkOption {
+    overrideUserAgent = mkEnableOption "" // {
       default = true;
+      description = "Whether to override User-Agent";
     };
-    usePodcastParticipantAsArtist = mkOption {
+    usePodcastParticipantAsArtist = mkEnableOption "" // {
       default = true;
+      description = ''
+        Whether to use the podcast participant as artist.
+
+        Workaround used when listening to a podcast.
+      '';
     };
     themes = mkOption {
       default = [ ];
+      description = "Custom CSS themes";
       type = types.listOf types.path;
     };
     customWindowTitle = mkOption {
@@ -141,7 +161,7 @@ in
         Set window title to this value instead of dynamically changing it to
         the current song's name.
 
-        See https://github.com/th-ch/pear-desktop/pull/3656
+        See https://github.com/pear-devs/pear-desktop/pull/3656
       '';
       default = null;
       type = types.nullOr types.str;
