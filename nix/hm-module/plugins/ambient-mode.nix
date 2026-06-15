@@ -6,6 +6,7 @@ in
   enable = mkEnableOption "Ambient Mode plugin";
   quality = mkOption {
     default = 50;
+    description = "ambient mode quality (pixels)";
     type = types.enum [
       10
       25
@@ -18,6 +19,7 @@ in
   };
   buffer = mkOption {
     default = 30;
+    description = "ambient mode buffer";
     type = types.enum [
       1
       5
@@ -28,6 +30,7 @@ in
   };
   interpolationTime = mkOption {
     default = 1500;
+    description = "ambient mode interpolation time (ms)";
     type = types.enum [
       0
       500
@@ -41,6 +44,7 @@ in
   };
   blur = mkOption {
     default = 100;
+    description = "ambient mode blur (%)";
     type = types.enum [
       0
       5
@@ -55,6 +59,7 @@ in
   };
   size = mkOption {
     default = 100;
+    description = "ambient mode size (%)";
     type = types.enum [
       100
       110
@@ -70,5 +75,5 @@ in
     default = 1.0;
     type = types.numbers.between 0 1;
   };
-  fullscreen = mkOption { default = false; };
+  fullscreen = mkEnableOption "ambient mode fullscreen";
 }
