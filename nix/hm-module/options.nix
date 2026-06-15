@@ -118,6 +118,7 @@ in
       type = types.str;
     };
     startingPage = mkOption {
+      description = "Starting page";
       default = "";
       type = types.enum [
         ""
