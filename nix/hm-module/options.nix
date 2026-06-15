@@ -1,6 +1,6 @@
 { lib, pkgs, ... }:
 let
-  inherit (pkgs.stdenv.hostPlatform) isDarwin;
+  inherit (pkgs.stdenv.hostPlatform) isDarwin isLinux;
   inherit (lib) mkOption mkEnableOption types;
 in
 {
@@ -80,7 +80,7 @@ in
 
         https://www.electronjs.org/docs/api/app#appsetloginitemsettingssettings-macos-windows
       '';
-      internal = !isDarwin;
+      internal = isLinux;
       default = false;
     };
     disableHardwareAcceleration = mkEnableOption "" // {
