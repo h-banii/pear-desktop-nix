@@ -27,7 +27,7 @@ rec {
     opts: cfg:
     let
       # This is done to avoid "obsolete option" warnings:
-      # - first check if the option is defined (or if it's not even an option)
+      # - first check if the option is defined (or if it's even not an option)
       # - then we get the corresponding configuration value
       definedOptions = filterAttrsRecursive (
         n: v: (!lib.isOption v) && n != "_module" || (v.isDefined or false)
