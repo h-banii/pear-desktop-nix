@@ -1,11 +1,12 @@
-{ lib, ... }:
+{ lib, pkgs }:
 let
   inherit (lib) mkEnableOption mkOption types;
+  inherit (pkgs.stdenv.hostPlatform) isLinux;
 in
 {
   enable = mkEnableOption "Notifications plugin";
-  unpauseNotification = mkOption {
-    default = false;
+  unpauseNotification = mkEnableOption "" // {
+    description = "Whether to show notification on unpause";
   };
   urgency = mkOption {
     default = "normal";
@@ -15,10 +16,13 @@ in
       "normal"
       "critical"
     ];
+    internal = !isLinux;
   };
   interactive = mkOption {
     default = true;
+    type = types.bool;
     description = "Only has effect on Windows";
+    internal = true;
   };
   toastStyle = mkOption {
     default = 1;
@@ -40,14 +44,15 @@ in
       6: banner_bottom
       7: legacy
     '';
+    internal = true;
   };
-  refreshOnPlayPause = mkOption {
-    default = false;
+  refreshOnPlayPause = mkEnableOption "refresh on play/pause" // {
+    internal = true;
   };
-  trayControls = mkOption {
-    default = true;
+  trayControls = mkEnableOption "tray controls" // {
+    internal = true;
   };
-  hideButtonText = mkOption {
-    default = false;
+  hideButtonText = mkEnableOption "hide button text" // {
+    internal = true;
   };
 }
