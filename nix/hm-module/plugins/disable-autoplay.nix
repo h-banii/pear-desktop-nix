@@ -1,8 +1,10 @@
 { lib, ... }:
 let
-  inherit (lib) mkEnableOption mkOption;
+  inherit (lib) mkEnableOption;
 in
 {
   enable = mkEnableOption "'Disable Autoplay' plugin";
-  applyOnce = mkOption { default = false; };
+  applyOnce = mkEnableOption "" // {
+    description = "Whether to apply only on startup";
+  };
 }
