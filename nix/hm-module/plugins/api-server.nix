@@ -4,10 +4,15 @@ let
 in
 {
   enable = mkEnableOption "API Server plugin";
-  hostname = mkOption { default = "0.0.0.0"; };
+  hostname = mkOption {
+    default = "0.0.0.0";
+    type = types.str;
+    description = "API server host";
+  };
   port = mkOption {
     default = 26538;
     type = types.port;
+    description = "API server port";
   };
   authStrategy = mkOption {
     type = types.enum [
@@ -15,10 +20,16 @@ in
       "NONE"
     ];
     default = "AUTH_AT_FIRST";
+    description = "API server authentication";
   };
-  secret = mkOption { default = ""; };
+  secret = mkOption {
+    default = "";
+    type = types.str;
+    internal = true;
+  };
   authorizedClients = mkOption {
     default = [ ];
     type = types.listOf types.str;
+    internal = true;
   };
 }
