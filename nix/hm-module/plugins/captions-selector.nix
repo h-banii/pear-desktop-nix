@@ -4,7 +4,13 @@ let
 in
 {
   enable = mkEnableOption "Captions Selector plugin";
-  disableCaptions = mkOption { default = false; };
-  autoload = mkOption { default = false; };
-  lastCaptionsCode = mkOption { default = ""; };
+  disableCaptions = mkEnableOption "" // {
+    description = "Whether to disable captions";
+  };
+  autoload = mkEnableOption "autoload last used caption";
+  lastCaptionsCode = mkOption {
+    default = "";
+    type = lib.types.str;
+    internal = true;
+  };
 }
