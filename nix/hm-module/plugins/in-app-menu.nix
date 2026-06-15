@@ -1,8 +1,12 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 let
-  inherit (lib) mkEnableOption mkOption;
+  inherit (lib) mkEnableOption;
+  inherit (pkgs.stdenv.hostPlatform) isLinux;
 in
 {
   enable = mkEnableOption "In-App Menu plugin";
-  hideDOMWindowControls = mkOption { default = false; };
+  hideDOMWindowControls = mkEnableOption "" // {
+    description = "Whether to hide DOM window controls";
+    internal = !isLinux;
+  };
 }
