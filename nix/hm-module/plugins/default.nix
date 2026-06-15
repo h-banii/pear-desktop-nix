@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 let
   inherit (lib) mkEnableOption mkRenamedOptionModule mergeAttrs;
   inherit (builtins) listToAttrs map;
@@ -134,7 +134,7 @@ in
       (listToAttrs (
         map (plugin: {
           name = plugin;
-          value = import ./${plugin}.nix { inherit lib; };
+          value = import ./${plugin}.nix { inherit lib pkgs; };
         }) complexPlugins
       ))
       (
