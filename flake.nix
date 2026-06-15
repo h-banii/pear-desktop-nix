@@ -3,6 +3,7 @@
 
   outputs =
     {
+      self,
       nixpkgs,
       ...
     }:
@@ -17,7 +18,35 @@
       pkgsFor = forAllSystems (system: nixpkgs.legacyPackages.${system});
     in
     {
-      homeManagerModules.default = ./nix/hm-module;
+      homeManagerModules.default = import ./nix/hm-module { pearLib = self.lib; };
+
+      lib = import ./nix/lib { inherit lib; };
+
+      legacyPackages = forAllSystems (
+        system:
+        let
+          pkgs = pkgsFor.${system};
+        in
+        rec {
+          eval = pkgs.callPackage ./nix/legacyPackages/eval.nix { module = self.homeManagerModules.default; };
+          nixosOptionsDoc = pkgs.callPackage ./nix/legacyPackages/nixosOptionsDoc.nix { inherit eval; };
+        }
+      );
+
+      checks = forAllSystems (
+        system:
+        let
+          inherit (self.legacyPackages.${system}) nixosOptionsDoc eval;
+          pkgs = pkgsFor.${system};
+        in
+        {
+          optionsJSON = nixosOptionsDoc.optionsJSON.overrideAttrs {
+            allowSubstitutes = false;
+            preferLocalBuild = true;
+          };
+          configJSON = pkgs.writeText "config.json" (with eval; self.lib.toPearDesktopJSON options config);
+        }
+      );
 
       formatter = forAllSystems (system: pkgsFor.${system}.nixfmt-tree);
     };
