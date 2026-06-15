@@ -5,6 +5,7 @@ in
 {
   enable = mkEnableOption "Equalizer plugin";
   filters = mkOption {
+    internal = true;
     default = [ ];
     type =
       with types;
@@ -12,14 +13,28 @@ in
         options = {
           type = mkOption {
             description = "BiquadFilterType";
-            example = "lowshelf";
+            default = "lowshelf";
             type = str;
+            internal = true;
           };
           frequency = mkOption {
-            type = int;
+            default = 80;
+            type = number;
+            description = "frequency";
+            internal = true;
           };
-          Q = mkOption { type = int; };
-          gain = mkOption { type = float; };
+          Q = mkOption {
+            type = number;
+            description = "Q";
+            default = 100;
+            internal = true;
+          };
+          gain = mkOption {
+            type = number;
+            description = "gain";
+            default = 12.0;
+            internal = true;
+          };
         };
       });
   };
