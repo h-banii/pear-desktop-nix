@@ -1,8 +1,8 @@
 { lib, ... }:
 let
-  inherit (lib) mkEnableOption mkOption;
+  inherit (lib) mkEnableOption;
 in
 {
   enable = mkEnableOption "Lyrics Genius plugin";
-  romanizedLyrics = mkOption { default = false; };
+  romanizedLyrics = mkEnableOption "romanized lyrics";
 }
