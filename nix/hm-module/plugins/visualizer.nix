@@ -1,11 +1,19 @@
 { lib }:
 let
   inherit (lib) mkEnableOption mkOption types;
+  mkOptionalOption =
+    { type, ... }@args:
+    mkOption {
+      default = null;
+      type = types.nullOr type;
+    }
+    // (builtins.removeAttrs args [ "type" ]);
 in
 {
   enable = mkEnableOption "Visualizer plugin";
   type = mkOption {
     default = "butterchurn";
+    description = "Visualizer type";
     type = types.enum [
       "butterchurn"
       "vudio"
@@ -15,12 +23,18 @@ in
   butterchurn = {
     preset = mkOption {
       default = "martin [shadow harlequins shape code] - fata morgana";
+      type = types.str;
+      internal = true;
     };
     renderingFrequencyInMs = mkOption {
       default = 500;
+      type = types.number;
+      internal = true;
     };
     blendTimeInSeconds = mkOption {
       default = 2.7;
+      type = types.number;
+      internal = true;
     };
   };
   vudio = {
@@ -32,34 +46,50 @@ in
         "circlebar"
         "lighting"
       ];
+      internal = true;
     };
     accuracy = mkOption {
       default = 128;
+      type = types.number;
+      internal = true;
     };
     lighting = {
       maxHeight = mkOption {
         default = 160;
+        type = types.number;
+        internal = true;
       };
       maxSize = mkOption {
         default = 12;
+        type = types.number;
+        internal = true;
       };
       lineWidth = mkOption {
         default = 1;
+        type = types.number;
+        internal = true;
       };
       color = mkOption {
         default = "#49f3f7";
+        type = types.str;
+        internal = true;
       };
       shadowBlur = mkOption {
         default = 2;
+        type = types.number;
+        internal = true;
       };
       shadowColor = mkOption {
         default = "rgba(244,244,244,.5)";
+        type = types.str;
+        internal = true;
       };
-      fadeSide = mkOption {
+      fadeSide = mkEnableOption "fade side" // {
         default = true;
+        internal = true;
       };
-      prettify = mkOption {
-        default = false;
+      prettify = mkEnableOption "prettify" // {
+        internal = true;
       };
       horizontalAlign = mkOption {
         default = "center";
@@ -68,6 +98,7 @@ in
           "center"
           "right"
         ];
+        internal = true;
       };
       verticalAlign = mkOption {
         default = "middle";
@@ -76,9 +107,11 @@ in
           "middle"
           "bottom"
         ];
+        internal = true;
       };
-      dottify = mkOption {
+      dottify = mkEnableOption "dottify" // {
         default = true;
+        internal = true;
       };
     };
   };
@@ -94,13 +127,73 @@ in
             };
             rotate = mkOption {
               default = null;
-              type = nullOr int;
+              type = nullOr number;
+            };
+          };
+        };
+      animation =
+        with types;
+        submodule {
+          options = {
+            type = mkOption {
+              type = str;
+              internal = true;
+            };
+            config = {
+              bottom = mkOptionalOption {
+                type = bool;
+                internal = true;
+              };
+              top = mkOptionalOption {
+                type = bool;
+                internal = true;
+              };
+              count = mkOptionalOption {
+                type = number;
+                internal = true;
+              };
+              cubeHeight = mkOptionalOption {
+                type = number;
+                internal = true;
+              };
+              lineWidth = mkOptionalOption {
+                type = number;
+                internal = true;
+              };
+              diameter = mkOptionalOption {
+                type = number;
+                internal = true;
+              };
+              fillColor = mkOptionalOption {
+                type = oneOf [
+                  str
+                  waveColor
+                ];
+                internal = true;
+              };
+              lineColor = mkOptionalOption {
+                type = oneOf [
+                  str
+                  waveColor
+                ];
+                internal = true;
+              };
+              radius = mkOptionalOption {
+                type = number;
+                internal = true;
+              };
+              frequencyBand = mkOptionalOption {
+                type = str;
+                internal = true;
+              };
             };
           };
         };
     in
     {
       animations = mkOption {
+        type = with types; listOf animation;
+        internal = true;
         default = [
           {
             type = "Cubes";
@@ -152,61 +245,6 @@ in
             };
           }
         ];
-        type =
-          with types;
-          listOf (submodule {
-            options = {
-              type = mkOption { type = str; };
-              config = {
-                bottom = mkOption {
-                  default = null;
-                  type = nullOr bool;
-                };
-                top = mkOption {
-                  default = null;
-                  type = nullOr bool;
-                };
-                count = mkOption {
-                  default = null;
-                  type = nullOr int;
-                };
-                cubeHeight = mkOption {
-                  default = null;
-                  type = nullOr int;
-                };
-                lineWidth = mkOption {
-                  default = null;
-                  type = nullOr int;
-                };
-                diameter = mkOption {
-                  default = null;
-                  type = nullOr int;
-                };
-                fillColor = mkOption {
-                  default = null;
-                  type = nullOr (oneOf [
-                    str
-                    waveColor
-                  ]);
-                };
-                lineColor = mkOption {
-                  default = null;
-                  type = nullOr (oneOf [
-                    str
-                    waveColor
-                  ]);
-                };
-                radius = mkOption {
-                  default = null;
-                  type = nullOr int;
-                };
-                frequencyBand = mkOption {
-                  default = null;
-                  type = nullOr str;
-                };
-              };
-            };
-          });
       };
     };
 }
