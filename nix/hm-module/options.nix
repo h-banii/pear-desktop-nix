@@ -100,10 +100,11 @@ in
     };
     resumeOnStart = mkEnableOption "" // {
       description = "Whether to resume the last song when the app starts";
-      defaul = true;
+      default = true;
     };
     likeButtons = mkOption {
-      default = "Whether to show or hide the like buttons";
+      description = "Whether to show or hide the like buttons";
+      default = "";
       type = types.enum [
         ""
         "force"
