@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'nix/**'
+      - 'flake.nix'
+  pull_request:
+    branches: [master]
+    paths:
+      - 'nix/**'
+      - 'flake.nix'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6.0.3
+
+      - name: Nix install
+        uses: nixbuild/nix-quick-install-action@v34
+
+      - name: Nix check
+        run: nix flake check --print-build-logs
