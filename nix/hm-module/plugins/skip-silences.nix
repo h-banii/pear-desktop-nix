@@ -4,7 +4,7 @@ let
 in
 {
   enable = mkEnableOption "Skip Silences plugin";
-  onlySkipBeginning = mkOption {
-    default = false;
+  onlySkipBeginning = mkEnableOption "" // {
+    description = "Whether to only skip beginning";
   };
 }
