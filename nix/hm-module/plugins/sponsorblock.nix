@@ -6,6 +6,9 @@ in
   enable = mkEnableOption "SponsorBlock plugin";
   apiURL = mkOption {
     default = "https://sponsor.ajay.app";
+    type = types.str;
+    description = "API url";
+    internal = true;
   };
   categories =
     let
@@ -20,6 +23,8 @@ in
     in
     mkOption {
       default = categoryList;
+      description = "SponsorBlock categories";
       type = types.listOf (types.enum categoryList);
+      internal = true;
     };
 }
