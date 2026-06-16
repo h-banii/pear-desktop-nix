@@ -4,8 +4,9 @@ let
 in
 {
   enable = mkEnableOption "Video Toggle plugin";
-  hideVideo = mkOption {
-    default = false;
+  hideVideo = mkEnableOption "" // {
+    description = "Whether to hide the video";
+    internal = true;
   };
   mode = mkOption {
     default = "custom";
@@ -14,9 +15,10 @@ in
       "native"
       "disabled"
     ];
+    description = "video toggle mode";
   };
-  forceHide = mkOption {
-    default = false;
+  forceHide = mkEnableOption "" // {
+    description = "Whether to forcefully hide the video toggle";
   };
   align = mkOption {
     default = "left";
@@ -25,5 +27,6 @@ in
       "middle"
       "right"
     ];
+    description = "video toggle alignment";
   };
 }
