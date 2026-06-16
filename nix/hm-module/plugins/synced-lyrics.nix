@@ -4,17 +4,17 @@ let
 in
 {
   enable = mkEnableOption "Synced Lyrics plugin";
-  preciseTiming = mkOption {
+  preciseTiming = mkEnableOption "precise timing" // {
     default = true;
   };
-  showLyricsEvenIfInexact = mkOption {
+  showLyricsEvenIfInexact = mkEnableOption "lyrics even if inexact" // {
     default = true;
   };
-  showTimeCodes = mkOption {
-    default = false;
-  };
+  showTimeCodes = mkEnableOption "time codes";
   defaultTextString = mkOption {
     default = "♪";
+    type = types.str;
+    description = "character between lyrics";
   };
   lineEffect = mkOption {
     default = "fancy";
@@ -24,6 +24,7 @@ in
       "offset"
       "focus"
     ];
+    description = "line effect";
   };
   romanization = mkEnableOption "romanized lyrics" // {
     default = true;
