@@ -1,8 +1,8 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    vue-nix-manual = {
-      url = "github:h-banii/vue-nix-manual";
+    vue-nix-docs = {
+      url = "github:h-banii/vue-nix-docs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hm-module = {
@@ -17,7 +17,7 @@
       nixpkgs,
       systems,
       hm-module,
-      vue-nix-manual,
+      vue-nix-docs,
       ...
     }:
     let
@@ -28,13 +28,13 @@
     {
       packages = forAllSystems (system: {
         default = pkgsFor.${system}.callPackage ./nix/package.nix {
-          vue-nix-manual = vue-nix-manual.packages.${system}.default;
+          vue-nix-docs = vue-nix-docs.packages.${system}.default;
           home-manager-options = self.legacyPackages.${system}.home-manager-options.optionsJSON;
         };
       });
 
       legacyPackages = forAllSystems (system: {
-        home-manager-options = vue-nix-manual.lib.${system}.mkOptionsDoc {
+        home-manager-options = vue-nix-docs.lib.${system}.mkOptionsDoc {
           module = hm-module.homeManagerModules.default;
         };
       });

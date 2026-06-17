@@ -3,7 +3,7 @@
   buildNpmPackage,
   nix-gitignore,
   importNpmLock,
-  vue-nix-manual,
+  vue-nix-docs,
   home-manager-options,
   ...
 }:
@@ -17,8 +17,8 @@ buildNpmPackage {
 
   # TODO: Figure out a better fix
   preBuild = ''
-    rm ./node_modules/vue-nix-manual
-    cp -r "${vue-nix-manual}/lib/node_modules/vue-nix-manual" ./node_modules/vue-nix-manual
+    rm ./node_modules/vue-nix-docs
+    cp -r "${vue-nix-docs}/lib/node_modules/vue-nix-docs" ./node_modules/vue-nix-docs
   '';
 
   src = nix-gitignore.gitignoreSourcePure [
@@ -47,7 +47,7 @@ buildNpmPackage {
   npmDeps = importNpmLock {
     npmRoot = ../.;
     packageSourceOverrides = {
-      "node_modules/vue-nix-manual" = "${vue-nix-manual}/lib/node_modules/vue-nix-manual";
+      "node_modules/vue-nix-docs" = "${vue-nix-docs}/lib/node_modules/vue-nix-docs";
     };
   };
 

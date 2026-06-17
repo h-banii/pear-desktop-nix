@@ -2,7 +2,7 @@
 import { h } from "vue";
 import type { Theme } from "vitepress";
 import DefaultTheme from "vitepress/theme";
-import VueNixManual from "vue-nix-manual";
+import VueNixManual from "vue-nix-docs";
 import "./style.css";
 
 export default {

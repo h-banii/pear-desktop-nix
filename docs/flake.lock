@@ -37,7 +37,7 @@
         "hm-module": "hm-module",
         "nixpkgs": "nixpkgs",
         "systems": "systems",
-        "vue-nix-manual": "vue-nix-manual"
+        "vue-nix-docs": "vue-nix-docs"
       }
     },
     "systems": {
@@ -68,7 +68,7 @@
         "type": "indirect"
       }
     },
-    "vue-nix-manual": {
+    "vue-nix-docs": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
@@ -76,16 +76,16 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1780947399,
-        "narHash": "sha256-5vkXhD08fo41uaGgf00IzHn7Vr3NkGrHtPJpg00B5dg=",
+        "lastModified": 1781932030,
+        "narHash": "sha256-BJ31Hn34GAaoHcpm7dJ9QRBj2ySPy0Hk4ogKNawOHbo=",
         "owner": "h-banii",
-        "repo": "vue-nix-manual",
-        "rev": "eb6eabfa28a30237f55fee2c1e5c0258c49e1bf5",
+        "repo": "vue-nix-docs",
+        "rev": "cba74e8955231e22508beec96f4b49f507574c14",
         "type": "github"
       },
       "original": {
         "owner": "h-banii",
-        "repo": "vue-nix-manual",
+        "repo": "vue-nix-docs",
         "type": "github"
       }
     }
