@@ -1,6 +1,5 @@
 # Virtual Machine
 
-
 Example on how to set qemu options
 
 ```sh
