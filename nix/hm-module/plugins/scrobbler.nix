@@ -35,7 +35,7 @@ in
       };
       apiRoot = mkOption {
         description = "Root of the Last.fm API";
-        default = "http =//ws.audioscrobbler.com/2.0/";
+        default = "https://ws.audioscrobbler.com/2.0/";
         type = types.str;
       };
       apiKey = mkOption {
@@ -58,7 +58,7 @@ in
       };
       apiRoot = mkOption {
         description = "Root of the ListenBrainz API";
-        default = "https =//api.listenbrainz.org/1/";
+        default = "https://api.listenbrainz.org/1/";
         type = types.str;
       };
     };
