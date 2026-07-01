@@ -32,4 +32,15 @@ in
     type = types.listOf types.str;
     internal = true;
   };
+  useHttps = mkEnableOption "HTTPS support";
+  certPath = mkOption {
+    description = "string path to HTTPS certificate";
+    type = types.str;
+    default = "";
+  };
+  keyPath = mkOption {
+    description = "path to HTTPS key";
+    type = types.str;
+    default = "";
+  };
 }
