@@ -10,6 +10,7 @@ let
     "api-server"
     "auth-proxy-adapter"
     "captions-selector"
+    "clock"
     "crossfade"
     "custom-output-device"
     "disable-autoplay"
