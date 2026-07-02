@@ -68,7 +68,7 @@ in
 
     version = mkOption {
       description = "Version used in migrations";
-      default = "3.11.0";
+      default = "3.12.0";
       internal = true;
     };
 
