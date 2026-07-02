@@ -1,6 +1,11 @@
 { lib, pkgs, ... }:
 let
-  inherit (lib) mkEnableOption mkRenamedOptionModule mergeAttrs;
+  inherit (lib)
+    mkEnableOption
+    mkRenamedOptionModule
+    mkRemovedOptionModule
+    mergeAttrs
+    ;
   inherit (builtins) listToAttrs map;
 
   complexPlugins = [
@@ -70,6 +75,14 @@ let
 in
 {
   imports = renamedEnableOptions ++ [
+    (mkRemovedOptionModule (
+      baseOptionName
+      ++ [
+        "visualizer"
+        "butterchurn"
+        "renderingFrequencyInMs"
+      ]
+    ) "")
     (mkRenamedOptionModule (baseOptionName ++ [ "adblocker" ]) (baseOptionName ++ [ "do-not-track" ]))
     (mkRenamedOptionModule
       (
