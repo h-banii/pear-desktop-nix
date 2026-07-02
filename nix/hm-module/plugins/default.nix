@@ -4,7 +4,6 @@ let
   inherit (builtins) listToAttrs map;
 
   complexPlugins = [
-    "adblocker"
     "album-color-theme"
     "ambient-mode"
     "api-server"
@@ -15,6 +14,7 @@ let
     "custom-output-device"
     "disable-autoplay"
     "discord"
+    "do-not-track"
     "downloader"
     "equalizer"
     "in-app-menu"
@@ -70,6 +70,7 @@ let
 in
 {
   imports = renamedEnableOptions ++ [
+    (mkRenamedOptionModule (baseOptionName ++ [ "adblocker" ]) (baseOptionName ++ [ "do-not-track" ]))
     (mkRenamedOptionModule
       (
         baseOptionName
