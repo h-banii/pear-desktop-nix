@@ -13,7 +13,6 @@ in
     type = types.enum [
       "With blocklists"
       "In player"
-      "Ad speedup"
     ];
     default = "In player";
   };
@@ -22,7 +21,7 @@ in
     type = types.listOf types.str;
     default = [ ];
   };
-  disableDefaultLists = mkEnableOption null // {
+  disableDefaultLists = mkEnableOption "" // {
     description = "Whether to disable the default blocklists";
   };
 }

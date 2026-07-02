@@ -1,19 +1,25 @@
 { lib, pkgs, ... }:
 let
-  inherit (lib) mkEnableOption mkRenamedOptionModule mergeAttrs;
+  inherit (lib)
+    mkEnableOption
+    mkRenamedOptionModule
+    mkRemovedOptionModule
+    mergeAttrs
+    ;
   inherit (builtins) listToAttrs map;
 
   complexPlugins = [
-    "adblocker"
     "album-color-theme"
     "ambient-mode"
     "api-server"
     "auth-proxy-adapter"
     "captions-selector"
+    "clock"
     "crossfade"
     "custom-output-device"
     "disable-autoplay"
     "discord"
+    "do-not-track"
     "downloader"
     "equalizer"
     "in-app-menu"
@@ -53,25 +59,34 @@ let
     performance-improvement = "Performance Improvement plugin";
   };
 
-  pluginOptionPathBase = [
+  baseOptionName = [
     "programs"
     "pear-desktop"
     "plugins"
   ];
 
-  renamedOptions = builtins.map (
+  renamedEnableOptions = builtins.map (
     pluginName:
     let
-      pluginOptionPath = pluginOptionPathBase ++ [ pluginName ];
+      optionName = baseOptionName ++ [ pluginName ];
     in
-    mkRenamedOptionModule (pluginOptionPath ++ [ "enabled" ]) (pluginOptionPath ++ [ "enable" ])
+    mkRenamedOptionModule (optionName ++ [ "enabled" ]) (optionName ++ [ "enable" ])
   ) ((builtins.attrNames simplePlugins) ++ complexPlugins);
 in
 {
-  imports = renamedOptions ++ [
+  imports = renamedEnableOptions ++ [
+    (mkRemovedOptionModule (
+      baseOptionName
+      ++ [
+        "visualizer"
+        "butterchurn"
+        "renderingFrequencyInMs"
+      ]
+    ) "")
+    (mkRenamedOptionModule (baseOptionName ++ [ "adblocker" ]) (baseOptionName ++ [ "do-not-track" ]))
     (mkRenamedOptionModule
       (
-        pluginOptionPathBase
+        baseOptionName
         ++ [
           "scrobbler"
           "scrobblers"
@@ -80,7 +95,7 @@ in
         ]
       )
       (
-        pluginOptionPathBase
+        baseOptionName
         ++ [
           "scrobbler"
           "scrobblers"
@@ -91,7 +106,7 @@ in
     )
     (mkRenamedOptionModule
       (
-        pluginOptionPathBase
+        baseOptionName
         ++ [
           "scrobbler"
           "scrobblers"
@@ -100,7 +115,7 @@ in
         ]
       )
       (
-        pluginOptionPathBase
+        baseOptionName
         ++ [
           "scrobbler"
           "scrobblers"
@@ -111,7 +126,7 @@ in
     )
     (mkRenamedOptionModule
       (
-        pluginOptionPathBase
+        baseOptionName
         ++ [
           "downloader"
           "downloadOnFinish"
@@ -119,7 +134,7 @@ in
         ]
       )
       (
-        pluginOptionPathBase
+        baseOptionName
         ++ [
           "downloader"
           "downloadOnFinish"

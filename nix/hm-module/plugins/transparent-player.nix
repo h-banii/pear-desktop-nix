@@ -16,7 +16,7 @@ in
       "tabbed"
       "none"
     ];
-    default = "acrylic";
+    default = "none";
     description = "Transparent player's material type";
   };
 }

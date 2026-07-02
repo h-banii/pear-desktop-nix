@@ -17,7 +17,6 @@ in
     default = 10 * 60 * 1000;
     type = types.number;
   };
-  # TODO: Check if this needs renaming on the next release
   playOnYouTubeMusic = mkEnableOption "" // {
     description = ''Add a "Play on Pear Desktop" button to rich presence'';
   };

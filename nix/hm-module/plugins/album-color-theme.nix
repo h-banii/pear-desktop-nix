@@ -9,4 +9,5 @@ in
     description = "Color mix ratio";
     type = types.number;
   };
+  enableSeekbar = mkEnableOption "seek bar";
 }

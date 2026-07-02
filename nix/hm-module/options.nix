@@ -111,6 +111,9 @@ in
         "hide"
       ];
     };
+    swapLikeButtonsOrder = mkEnableOption "" // {
+      description = "Whether to swap the like buttons order";
+    };
     proxy = mkOption {
       default = "";
       description = "Proxy uri";

@@ -26,11 +26,6 @@ in
       type = types.str;
       internal = true;
     };
-    renderingFrequencyInMs = mkOption {
-      default = 500;
-      type = types.number;
-      internal = true;
-    };
     blendTimeInSeconds = mkOption {
       default = 2.7;
       type = types.number;
