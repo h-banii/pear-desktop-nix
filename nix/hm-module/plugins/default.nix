@@ -54,25 +54,25 @@ let
     performance-improvement = "Performance Improvement plugin";
   };
 
-  pluginOptionPathBase = [
+  baseOptionName = [
     "programs"
     "pear-desktop"
     "plugins"
   ];
 
-  renamedOptions = builtins.map (
+  renamedEnableOptions = builtins.map (
     pluginName:
     let
-      pluginOptionPath = pluginOptionPathBase ++ [ pluginName ];
+      optionName = baseOptionName ++ [ pluginName ];
     in
-    mkRenamedOptionModule (pluginOptionPath ++ [ "enabled" ]) (pluginOptionPath ++ [ "enable" ])
+    mkRenamedOptionModule (optionName ++ [ "enabled" ]) (optionName ++ [ "enable" ])
   ) ((builtins.attrNames simplePlugins) ++ complexPlugins);
 in
 {
-  imports = renamedOptions ++ [
+  imports = renamedEnableOptions ++ [
     (mkRenamedOptionModule
       (
-        pluginOptionPathBase
+        baseOptionName
         ++ [
           "scrobbler"
           "scrobblers"
@@ -81,7 +81,7 @@ in
         ]
       )
       (
-        pluginOptionPathBase
+        baseOptionName
         ++ [
           "scrobbler"
           "scrobblers"
@@ -92,7 +92,7 @@ in
     )
     (mkRenamedOptionModule
       (
-        pluginOptionPathBase
+        baseOptionName
         ++ [
           "scrobbler"
           "scrobblers"
@@ -101,7 +101,7 @@ in
         ]
       )
       (
-        pluginOptionPathBase
+        baseOptionName
         ++ [
           "scrobbler"
           "scrobblers"
@@ -112,7 +112,7 @@ in
     )
     (mkRenamedOptionModule
       (
-        pluginOptionPathBase
+        baseOptionName
         ++ [
           "downloader"
           "downloadOnFinish"
@@ -120,7 +120,7 @@ in
         ]
       )
       (
-        pluginOptionPathBase
+        baseOptionName
         ++ [
           "downloader"
           "downloadOnFinish"
