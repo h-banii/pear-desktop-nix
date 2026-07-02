@@ -65,13 +65,38 @@ let
     "plugins"
   ];
 
-  renamedEnableOptions = builtins.map (
-    pluginName:
-    let
-      optionName = baseOptionName ++ [ pluginName ];
-    in
-    mkRenamedOptionModule (optionName ++ [ "enabled" ]) (optionName ++ [ "enable" ])
-  ) ((builtins.attrNames simplePlugins) ++ complexPlugins);
+  renamedEnableOptions =
+    builtins.map
+      (
+        pluginName:
+        let
+          optionName = baseOptionName ++ (lib.lists.flatten [ pluginName ]);
+        in
+        mkRenamedOptionModule (optionName ++ [ "enabled" ]) (optionName ++ [ "enable" ])
+      )
+      (
+        (builtins.attrNames simplePlugins)
+        ++ complexPlugins
+        ++ [
+          [
+
+            "scrobbler"
+            "scrobblers"
+            "lastfm"
+          ]
+          [
+
+            "scrobbler"
+            "scrobblers"
+            "listenbrainz"
+          ]
+          [
+
+            "downloader"
+            "downloadOnFinish"
+          ]
+        ]
+      );
 in
 {
   imports = renamedEnableOptions ++ [
@@ -84,64 +109,6 @@ in
       ]
     ) "")
     (mkRenamedOptionModule (baseOptionName ++ [ "adblocker" ]) (baseOptionName ++ [ "do-not-track" ]))
-    (mkRenamedOptionModule
-      (
-        baseOptionName
-        ++ [
-          "scrobbler"
-          "scrobblers"
-          "lastfm"
-          "enabled"
-        ]
-      )
-      (
-        baseOptionName
-        ++ [
-          "scrobbler"
-          "scrobblers"
-          "lastfm"
-          "enable"
-        ]
-      )
-    )
-    (mkRenamedOptionModule
-      (
-        baseOptionName
-        ++ [
-          "scrobbler"
-          "scrobblers"
-          "listenbrainz"
-          "enabled"
-        ]
-      )
-      (
-        baseOptionName
-        ++ [
-          "scrobbler"
-          "scrobblers"
-          "listenbrainz"
-          "enable"
-        ]
-      )
-    )
-    (mkRenamedOptionModule
-      (
-        baseOptionName
-        ++ [
-          "downloader"
-          "downloadOnFinish"
-          "enabled"
-        ]
-      )
-      (
-        baseOptionName
-        ++ [
-          "downloader"
-          "downloadOnFinish"
-          "enable"
-        ]
-      )
-    )
   ];
 
   options.programs.pear-desktop.plugins =
