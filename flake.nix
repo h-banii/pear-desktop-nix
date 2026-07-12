@@ -36,13 +36,19 @@
       checks = forAllSystems (
         system:
         let
-          inherit (self.legacyPackages.${system}) nixosOptionsDoc;
+          pkgs = pkgsFor.${system};
+          inherit (self.legacyPackages.${system}) nixosOptionsDoc eval;
+          config = self.lib.mkPearDesktopConfig {
+            inherit (eval) options config;
+            inherit pkgs;
+          };
         in
         {
-          optionsJSON = nixosOptionsDoc.optionsJSON.overrideAttrs {
+          nixosOptionsDocJSON = nixosOptionsDoc.optionsJSON.overrideAttrs {
             allowSubstitutes = false;
             preferLocalBuild = true;
           };
+          configJSON = config.package;
         }
       );
 
