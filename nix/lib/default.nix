@@ -51,7 +51,6 @@ rec {
 
   mkPearDesktopConfig =
     {
-      pkgs,
       options,
       config,
     }:
@@ -59,29 +58,21 @@ rec {
       opts = options.programs.pear-desktop;
       cfg = config.programs.pear-desktop;
 
-      jsonOptions = toPearDesktopJSON opts.options cfg.options;
-      jsonPlugins = toPearDesktopJSON opts.plugins cfg.plugins;
-
-      configText = ''
-        "url": "${cfg.url}",
-        "options": ${jsonOptions},
-        "plugins": ${jsonPlugins},
+      urlJSON = builtins.toJSON cfg.url;
+      versionJSON = builtins.toJSON cfg.version;
+      optionsJSON = toPearDesktopJSON opts.options cfg.options;
+      pluginsJSON = toPearDesktopJSON opts.plugins cfg.plugins;
+    in
+    ''
+      {
+        "url": ${urlJSON},
+        "options": ${optionsJSON},
+        "plugins": ${pluginsJSON},
         "__internal__": {
           "migrations": {
-            "version": "${cfg.version}"
+            "version": ${versionJSON}
           }
         }
-      '';
-    in
-    rec {
-      hash = builtins.hashString "sha256" configText;
-      package = pkgs.writeText "pear-desktop-config.json" ''
-        {
-          ${configText},
-          "__nix__": {
-            "hash": "${hash}"
-          }
-        }
-      '';
-    };
+      }
+    '';
 }

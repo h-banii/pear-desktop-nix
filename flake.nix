@@ -40,7 +40,6 @@
           inherit (self.legacyPackages.${system}) nixosOptionsDoc eval;
           config = self.lib.mkPearDesktopConfig {
             inherit (eval) options config;
-            inherit pkgs;
           };
         in
         {
@@ -48,7 +47,7 @@
             allowSubstitutes = false;
             preferLocalBuild = true;
           };
-          configJSON = config.package;
+          configJSON = pkgs.writeText "config.json" config;
         }
       );
 

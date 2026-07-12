@@ -16,10 +16,8 @@ let
     mkPackageOption
     mkRenamedOptionModule
     ;
-
+  inherit (pearLib) toPearDesktopJSON;
   cfg = config.programs.pear-desktop;
-
-  generatedConfig = pearLib.mkPearDesktopConfig { inherit pkgs options config; };
 in
 {
   options.programs.pear-desktop = {
@@ -36,27 +34,14 @@ in
 
         This is set internally by the application.
       '';
+      type = lib.types.str;
       internal = true;
     };
 
     version = mkOption {
       description = "Version used in migrations";
       default = "3.12.0";
-      internal = true;
-    };
-
-    # TODO: Check for changes on this option on the next release
-    #
-    # this is the `productName` in `package.json` (probably)
-    configFolderName = mkOption {
-      description = "Name of the config folder";
-      default = "YouTube Music";
-      internal = true;
-    };
-
-    configFileName = mkOption {
-      description = "Name of the config file";
-      default = "config.json";
+      type = lib.types.str;
       internal = true;
     };
   };
@@ -79,18 +64,26 @@ in
   config = mkIf cfg.enable {
     home.packages = [ cfg.package ];
 
-    home.activation.updatePearDesktopConfig =
+    xdg.configFile =
       let
-        jq = lib.getExe pkgs.jq;
+        configPath = "YouTube Music/config.json";
+        hmConfigPath = "YouTube Music/hm_config.json";
       in
-      lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        outConfig="${config.xdg.configHome}/${cfg.configFolderName}/${cfg.configFileName}"
-        homeManagerConfigHash="$(${jq} -r '.__nix__.hash' < "$outConfig")"
+      {
+        ${hmConfigPath} = {
+          source = pkgs.writeText "pear-desktop-config.json" (
+            pearLib.mkPearDesktopConfig { inherit options config; }
+          );
 
-        if [[ "$homeManagerConfigHash" != "${generatedConfig.hash}" ]]; then
-          cp ${generatedConfig.package} "$outConfig"
-          chmod u+w "$outConfig"
-        fi
-      '';
+          onChange =
+            let
+              hmConfigFile = "${config.xdg.configHome}/${hmConfigPath}";
+              configFile = "${config.xdg.configHome}/${configPath}";
+            in
+            ''
+              run install -Dm666 $VERBOSE_ARG '${hmConfigFile}' '${configFile}'
+            '';
+        };
+      };
   };
 }
