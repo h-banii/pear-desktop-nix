@@ -18,7 +18,7 @@
       pkgsFor = forAllSystems (system: nixpkgs.legacyPackages.${system});
     in
     {
-      homeManagerModules.default = import ./nix/hm-module { pearLib = self.lib; };
+      homeManagerModules.default = import ./nix/homeManagerModule { pearLib = self.lib; };
 
       lib = import ./nix/lib { inherit lib; };
 
