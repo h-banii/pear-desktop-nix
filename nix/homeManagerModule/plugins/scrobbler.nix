@@ -26,27 +26,28 @@ in
       token = mkOption {
         description = "Token used for authentication";
         default = null;
-        type = types.nullOr types.str;
+        type = with types; nullOr str;
       };
       sessionKey = mkOption {
         description = "Session key used for scrobbling";
         default = null;
-        type = types.nullOr types.str;
+        type = with types; nullOr str;
       };
       apiRoot = mkOption {
         description = "Root of the Last.fm API";
-        default = "https://ws.audioscrobbler.com/2.0/";
-        type = types.str;
+        default = null;
+        example = "https://ws.audioscrobbler.com/2.0/";
+        type = with types; nullOr str;
       };
       apiKey = mkOption {
-        description = "Last.fm api key registered by @semvis123";
-        default = "04d76faaac8726e60988e14c105d421a";
-        type = types.str;
+        description = "Last.fm api key";
+        default = null;
+        type = with types; nullOr str;
       };
       secret = mkOption {
-        description = "Last.fm api secret registered by @semvis123";
-        default = "a5d2a36fdf64819290f6982481eaffa2";
-        type = types.str;
+        description = "Last.fm api secret";
+        default = null;
+        type = with types; nullOr str;
       };
     };
     listenbrainz = {
@@ -58,8 +59,9 @@ in
       };
       apiRoot = mkOption {
         description = "Root of the ListenBrainz API";
-        default = "https://api.listenbrainz.org/1/";
-        type = types.str;
+        default = null;
+        example = "https://api.listenbrainz.org/1/";
+        type = with types; nullOr str;
       };
     };
   };

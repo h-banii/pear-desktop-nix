@@ -118,7 +118,7 @@ in
           options = {
             gradient = mkOption {
               default = null;
-              type = listOf str;
+              type = nullOr (listOf str);
             };
             rotate = mkOption {
               default = null;
@@ -202,7 +202,7 @@ in
                   "#F76B1C"
                 ];
               };
-              lineColor = "rgba(0;0;0;0)";
+              lineColor = "rgba(0,0,0,0)";
               radius = 20;
             };
           }
@@ -218,7 +218,7 @@ in
                   "#F76B1C"
                 ];
               };
-              lineColor = "rgba(0;0;0;0)";
+              lineColor = "rgba(0,0,0,0)";
               radius = 10;
             };
           }

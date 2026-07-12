@@ -4,7 +4,7 @@ let
 in
 {
   enable = mkEnableOption "AdBlocker plugin";
-  cache = mkOption {
+  cache = mkEnableOption "" // {
     description = "When enabled, the adblocker will cache the blocklists";
     default = true;
   };

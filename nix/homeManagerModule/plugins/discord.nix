@@ -19,6 +19,7 @@ in
   };
   playOnYouTubeMusic = mkEnableOption "" // {
     description = ''Add a "Play on Pear Desktop" button to rich presence'';
+    default = true;
   };
   hideGitHubButton = mkEnableOption "" // {
     description = ''Hide the "View App On GitHub" button in the rich presence'';

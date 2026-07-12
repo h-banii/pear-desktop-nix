@@ -39,7 +39,7 @@ in
     type = types.bool;
     internal = true;
   };
-  useNativePiP = mkOption {
+  useNativePiP = mkEnableOption "" // {
     default = true;
     description = "Use the browser's native PiP";
   };

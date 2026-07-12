@@ -63,6 +63,6 @@ in
   playlistMaxItems = mkOption {
     description = "playlist max items";
     default = null;
-    type = types.nullOr types.float;
+    type = with types; nullOr number;
   };
 }

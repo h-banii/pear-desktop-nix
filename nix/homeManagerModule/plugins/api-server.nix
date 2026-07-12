@@ -5,13 +5,15 @@ in
 {
   enable = mkEnableOption "API Server plugin";
   hostname = mkOption {
-    default = "0.0.0.0";
-    type = types.str;
+    default = null;
+    type = with types; nullOr str;
+    example = "0.0.0.0";
     description = "API server host";
   };
   port = mkOption {
-    default = 26538;
-    type = types.port;
+    default = null;
+    type = with types; nullOr port;
+    example = 26538;
     description = "API server port";
   };
   authStrategy = mkOption {
@@ -23,8 +25,8 @@ in
     description = "API server authentication";
   };
   secret = mkOption {
-    default = "";
-    type = types.str;
+    default = null;
+    type = with types; nullOr str;
     internal = true;
   };
   authorizedClients = mkOption {
@@ -35,12 +37,12 @@ in
   useHttps = mkEnableOption "HTTPS support";
   certPath = mkOption {
     description = "string path to HTTPS certificate";
-    type = types.str;
-    default = "";
+    type = with types; nullOr str;
+    default = null;
   };
   keyPath = mkOption {
     description = "path to HTTPS key";
-    type = types.str;
-    default = "";
+    type = with types; nullOr str;
+    default = null;
   };
 }

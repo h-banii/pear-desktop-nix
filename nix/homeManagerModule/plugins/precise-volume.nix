@@ -9,7 +9,7 @@ in
     description = "Percentage of volume to change";
     type = types.number;
   };
-  arrowsShortcut = mkOption {
+  arrowsShortcut = mkEnableOption "" // {
     default = true;
     description = "ArrowUp + ArrowDown local shortcuts";
   };
