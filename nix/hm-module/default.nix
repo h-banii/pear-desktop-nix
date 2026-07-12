@@ -16,37 +16,10 @@ let
     mkPackageOption
     mkRenamedOptionModule
     ;
-  inherit (pearLib) toPearDesktopJSON;
 
   cfg = config.programs.pear-desktop;
 
-  generatedConfig =
-    let
-      opts = options.programs.pear-desktop;
-      jsonOptions = toPearDesktopJSON opts.options cfg.options;
-      jsonPlugins = toPearDesktopJSON opts.plugins cfg.plugins;
-      configText = ''
-        "url": "${cfg.url}",
-        "options": ${jsonOptions},
-        "plugins": ${jsonPlugins},
-        "__internal__": {
-          "migrations": {
-            "version": "${cfg.version}"
-          }
-        }
-      '';
-    in
-    rec {
-      package = pkgs.writeText "pear-desktop-config.json" ''
-        {
-          ${configText},
-          "__nix__": {
-            "hash": "${hash}"
-          }
-        }
-      '';
-      hash = builtins.hashString "sha256" configText;
-    };
+  generatedConfig = pearLib.mkPearDesktopConfig { inherit pkgs options config; };
 in
 {
   options.programs.pear-desktop = {
