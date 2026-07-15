@@ -16,7 +16,6 @@ let
     mkPackageOption
     mkRenamedOptionModule
     ;
-  inherit (pearLib) toPearDesktopJSON;
   cfg = config.programs.pear-desktop;
 in
 {
